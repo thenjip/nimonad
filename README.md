@@ -1,2 +1,3 @@
 # nimonad
-Monad library for Nim
+
+A monad library for Nim.
