@@ -1,8 +1,7 @@
 import nimonad/[
   identity,
   io,
-  lazymonadlaws,
-  monadlaws,
+  laws,
   optional,
   predicate,
   reader
@@ -13,8 +12,7 @@ import nimonad/[
 export
   identity,
   io,
-  lazymonadlaws,
-  monadlaws,
+  laws,
   optional,
   predicate,
   reader
