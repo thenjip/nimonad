@@ -17,7 +17,7 @@ proc derefer [T](p: ptr T): T =
   p[]
 
 
-proc withMemory* [M; T](mem: () -> ptr M; f: M -> T): IO[T] =
+proc withMemory* [M; T](mem: () -> ptr M; f: M -> T): Io[T] =
   mem.tryBracket(derefer[M].chain(f), proc (m: ptr M): Unit = m.dealloc())
 
 

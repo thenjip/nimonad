@@ -13,7 +13,7 @@ import std/[sugar]
 
 
 
-proc withFile* [T](file: () -> File; compute: File -> T): IO[T] =
+proc withFile* [T](file: () -> File; compute: File -> T): Io[T] =
   file.tryBracket(compute, proc (f: File): Unit = f.close())
 
 
