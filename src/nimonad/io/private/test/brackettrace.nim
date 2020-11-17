@@ -19,10 +19,10 @@ type
 
   BracketTrace* [T] = tuple
     steps: seq[BracketStep]
-    output: T ## The output of the returned `IO[T]` by a `BracketCreator`.
+    output: T ## The output of the returned `Io[T]` by a `BracketCreator`.
 
   BracketCreator* [A; B] =
-    (before: IO[A], between: A -> B, after: A -> Unit) -> IO[B]
+    (before: Io[A], between: A -> B, after: A -> Unit) -> Io[B]
 
 
 
@@ -33,11 +33,11 @@ func bracketTrace* [T](steps: seq[BracketStep]; output: T): BracketTrace[T] =
 
 template trace* [A; B](
   self: BracketCreator[A, B];
-  before: IO[A];
+  before: Io[A];
   between: A -> B;
   after: A -> Unit;
   steps: var seq[BracketStep]
-): IO[B] =
+): Io[B] =
   self.call(
     before.map(partial(steps.addAndReturn(BracketStep.Before, ?_))),
     between.chain(partial(steps.addAndReturn(BracketStep.Between, ?_))),
@@ -47,11 +47,11 @@ template trace* [A; B](
 
 template traceWithException* [A; B; E: Exception](
   self: BracketCreator[A, B];
-  before: IO[A];
+  before: Io[A];
   between: proc (a: A): B {.raises: [].};
   exception: () -> ref E;
   steps: var seq[BracketStep]
-): IO[B] =
+): Io[B] =
   self.trace(
     before,
     between.chain(proc (_: B): B = raise exception.call),
@@ -63,10 +63,10 @@ template traceWithException* [A; B; E: Exception](
 
 func trace* [A; B](
   self: BracketCreator[A, B];
-  before: IO[A];
+  before: Io[A];
   between: A -> B;
   after: A -> Unit
-): IO[BracketTrace[B]] =
+): Io[BracketTrace[B]] =
   (
     proc (): BracketTrace[B] =
       var steps = newSeqOfCap[BracketStep](
@@ -82,10 +82,10 @@ func trace* [A; B](
 
 func traceSteps* [A; B; E: Exception](
   self: BracketCreator[A, B];
-  before: IO[A];
+  before: Io[A];
   between: proc (a: A): B {.raises: [].};
   exception: () -> ref E
-): IO[seq[BracketStep]] =
+): Io[seq[BracketStep]] =
   (
     proc (): seq[BracketStep] =
       var steps = newSeqOfCap[BracketStep](1)
@@ -103,10 +103,10 @@ func traceSteps* [A; B; E: Exception](
 when not defined(nimscript):
   func traceAndCatch* [A; B; E: Exception](
     self: BracketCreator[A, B];
-    before: IO[A];
+    before: Io[A];
     between: proc (a: A): B {.raises: [].};
     exception: () -> ref E
-  ): IO[BracketTrace[Optional[ref E]]] =
+  ): Io[BracketTrace[Optional[ref E]]] =
     (
       proc (): BracketTrace[Optional[ref E]] =
         var steps = newSeqOfCap[BracketStep](1)

@@ -161,7 +161,8 @@ proc `$`* [T](self: Optional[T]): string =
 
 
 when isMainModule:
-  import monadlaws
+  import laws
+  import optional/private/test/laws as optionallaws
 
   import pkg/funcynim/[call, ignore, partialproc, unit]
 
@@ -207,10 +208,7 @@ when isMainModule:
             nil.T.some().ignore()
 
 
-        when defined(js):
-          doTest(ref RootObj)
-        else:
-          doTest(pointer)
+        doTest(ref RootObj)
 
 
 
@@ -224,7 +222,7 @@ when isMainModule:
             actual == expected
 
 
-        when not defined(js):
+        when declared(system.pointer):
           doTest(pointer)
         doTest(Predicate[uint16])
         doTest(ref Exception)
@@ -248,28 +246,26 @@ when isMainModule:
 
 
 
-      test """"Optional[T]" should obey the monad laws.""":
-        proc doTest [LA; LMA; LMB; RT; RM; AA; AB; AMA; AMB; AMC](
-          spec: MonadLawsSpec[LA, LMA, LMB, RT, RM, AA, AB, AMA, AMB, AMC]
+      test """"Optional[T]" should verify the monad laws.""":
+        proc doTest [LA; LB; RT; AA; AB; AC](
+          spec: OptionalMonadLawsSpec[LA, LB, RT, AA, AB, AC]
         ) =
+          let (leftId, rightId, assoc) = spec.checkLaws()
+
           check:
-            spec.checkMonadLaws()
+            leftId.actual == leftId.expected
+            rightId.actual == rightId.expected
+            assoc.actual == assoc.expected
 
 
         doTest(
           monadLawsSpec(
             leftIdentitySpec(NaN, some, _ => float32.none()),
-            ["".cstring, nil]
-              .apply(
-                expected =>
-                  rightIdentitySpec(expected, _ => expected.typeof().none())
-              )
-            ,
+            rightIdentitySpec(@[""].some(), some),
             associativitySpec(
-              69,
-              some,
-              i => some(none[i.typeof()]),
-              (p: none[int].typeof()) => p.call().`$`().some()
+              69.some(),
+              (i: int) => i.float.some(),
+              (f: float) => f.`$`().some()
             )
           )
         )

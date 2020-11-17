@@ -1,5 +1,5 @@
 ##[
-  The IO monad from Haskell.
+  The Io monad from Haskell.
 
   It lets one build a computation that has no parameters.
   It can also be used as a wrapper for computations that interact with external
@@ -22,34 +22,34 @@ import std/[sugar]
 
 
 type
-  IO* [T] = () -> T
+  Io* [T] = () -> T
 
 
 
-func toIO* [T](value: T): IO[T] =
+func toIo* [T](value: T): Io[T] =
   () => value
 
 
 
-proc run* [T](self: IO[T]): T =
+proc run* [T](self: Io[T]): T =
   self.call()
 
 
 
-func map* [A; B](self: IO[A]; f: A -> B): IO[B] =
+func map* [A; B](self: Io[A]; f: A -> B): Io[B] =
   self.chain(f)
 
 
-func flatten* [T](self: IO[IO[T]]): IO[T] =
+func flatten* [T](self: Io[Io[T]]): Io[T] =
   self.map(run)
 
 
-func flatMap* [A; B](self: IO[A]; f: A -> IO[B]): IO[B] =
+func flatMap* [A; B](self: Io[A]; f: A -> Io[B]): Io[B] =
   self.map(f).flatten()
 
 
 
-func bracket* [A; B](before: IO[A]; between: A -> B; after: A -> Unit): IO[B] =
+func bracket* [A; B](before: Io[A]; between: A -> B; after: A -> Unit): Io[B] =
   ##[
     If an exception is raised anywhere in `before` or `between`, `after` will
     not be executed.
@@ -60,12 +60,12 @@ func bracket* [A; B](before: IO[A]; between: A -> B; after: A -> Unit): IO[B] =
 
 when not defined(nimscript):
   func tryBracket* [A; B](
-    before: IO[A];
+    before: Io[A];
     `try`: A -> B;
     `finally`: A -> Unit
-  ): IO[B] =
+  ): Io[B] =
     ##[
-      Any exception raised in `try` will be reraised in the returned `IO`.
+      Any exception raised in `try` will be reraised in the returned `Io`.
       Whether an exception was raised, `finally` will be executed once.
     ]##
     before.map(
@@ -81,24 +81,15 @@ when not defined(nimscript):
 
 
 when isMainModule:
-  import identity, lazymonadlaws, optional
+  import identity, laws, optional
   import io/private/test/[brackettrace]
+  import io/private/test/laws as iolaws
 
-  import pkg/funcynim/[call, partialproc, variables]
+  import pkg/funcynim/[call, partialproc]
   when not defined(js):
     import pkg/funcynim/[lambda]
 
   import std/[os, sequtils, strutils, unittest]
-
-
-
-  proc run [T](self: IO[T]; _: Unit): T =
-    self.run()
-
-
-
-  static:
-    doAssert(IO[byte] is LazyMonad[byte, Unit])
 
 
 
@@ -109,26 +100,26 @@ when isMainModule:
 
   proc main () =
     suite currentSourcePath().splitFile().name:
-      test """"IO[T]" should obey the monad laws.""":
-        proc doTest [LA; LMA; LMB; RT; RM; AA; AB; AMA; AMB; AMC](
-          spec: MonadLawsSpec[
-            LA, LMA, LMB, Unit, RT, RM, Unit, AA, AB, AMA, AMB, AMC, Unit
-          ]
+      test """"Io[T]" should obey the monad laws.""":
+        proc doTest [LA; LB; RT; AA; AB; AC](
+          spec: IoMonadLawsSpec[LA, LB, RT, AA, AB, AC]
         ) =
+          let (leftId, rightId, assoc) = spec.checkLaws()
+
           check:
-            spec.checkMonadLaws()
+            leftId.actual == leftId.expected
+            rightId.actual == rightId.expected
+            assoc.actual == assoc.expected
 
 
         doTest(
           monadLawsSpec(
-            leftIdentitySpec(-5, toIO, i => toIO(-i), unit()),
-            rightIdentitySpec(() => newStringOfCap(10), toIO, unit()),
+            leftIdentitySpec(-5, toIo, i => toIo(-i)),
+            rightIdentitySpec(Io[auto](() => "abc"), toIo),
             associativitySpec(
-              ('a', true),
-              toIO,
-              t => (t[0], not t[1]).toIO(),
-              (t: (char, bool)) => t[0].`$`().len().toIO(),
-              unit()
+              ('a', true).toIo(),
+              (t: (char, bool)) => (t[0], not t[1]).toIo(),
+              (t: (char, bool)) => t[0].`$`().len().toIo()
             )
           )
         )
@@ -136,7 +127,7 @@ when isMainModule:
 
 
       test [
-        """Side effect free expressions involving "IO[T]" should be""",
+        """Side effect free expressions involving "Io[T]" should be""",
         "compatible with compile time execution."
       ].join($' '):
         when defined(js):
@@ -145,10 +136,10 @@ when isMainModule:
           proc doTest () =
             const results =
               (
-                "abc".toIO().map(partial(len(?_))).run(),
+                "abc".toIo().map(partial(len(?_))).run(),
                 0
                   .lambda()
-                  .flatMap((i: int) => toIO(i + 6))
+                  .flatMap((i: int) => toIo(i + 6))
                   .map(partial($ ?_))
                   .run()
               )
@@ -165,7 +156,7 @@ when isMainModule:
         "raised."
       ].join($' '):
         proc doTest [A; B](
-          before: IO[A];
+          before: Io[A];
           between: proc (a: A): B {.raises: [].};
           after: A -> Unit;
           expectedOutput: B
@@ -195,7 +186,7 @@ when isMainModule:
         "\"between\"."
       ].join($' '):
         proc doTest [A; B; E: Exception](
-          before: IO[A];
+          before: Io[A];
           between: proc (a: A): B {.raises: [].};
           exception: () -> ref E
         ) =
@@ -223,7 +214,7 @@ when isMainModule:
           skip()
         else:
           proc doTest [A; B](
-            before: IO[A];
+            before: Io[A];
             `try`: proc (a: A): B {.raises: [].};
             `finally`: A -> Unit;
             expectedOutput: B
@@ -258,7 +249,7 @@ when isMainModule:
           skip()
         else:
           proc doTest [A; B; E: Exception](
-            before: IO[A];
+            before: Io[A];
             `try`: proc (a: A): B {.raises: [].};
             expectedException: ref E
           ) =

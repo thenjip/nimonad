@@ -68,32 +68,28 @@ func local* [S; T](self: Reader[S, T]; f: S -> S): Reader[S, T] =
 
 
 when isMainModule:
-  import lazymonadlaws
+  import laws
+  import reader/private/test/laws as readerlaws
 
   import pkg/funcynim/[operators, partialproc, unit]
 
-  import std/[os, sequtils, strutils, unittest]
-
-
-
-  static:
-    doAssert(
-      Reader[cuint, ref NilAccessDefect] is
-        LazyMonad[ref NilAccessDefect, cuint]
-    )
+  import std/[macros, os, sequtils, strutils, unittest]
 
 
 
   proc main () =
     suite currentSourcePath().splitFile().name:
       test """"Reader[S, T]" should obey the monad laws.""":
-        proc doTest [LA; LMA; LMB; LR; RT; RM; RR; AA; AB; AMA; AMB; AMC; AR](
-          spec: MonadLawsSpec[
-            LA, LMA, LMB, LR, RT, RM, RR, AA, AB, AMA, AMB, AMC, AR
-          ]
+        proc doTest [LA; LB; LS; RT; RS; AA; AB; AC; AS](
+          spec: ReaderMonadLawsSpec[LA, LB, LS, RT, RS, AA, AB, AC, AS];
+          runArgs: RunArgs[LS, RS, AS]
         ) =
+          let (leftId, rightId, assoc) = spec.checkLaws(runArgs)
+
           check:
-            spec.checkMonadLaws()
+            leftId.actual == leftId.expected
+            rightId.actual == rightId.expected
+            assoc.actual == assoc.expected
 
 
         doTest(
@@ -101,18 +97,21 @@ when isMainModule:
             leftIdentitySpec(
               @["a", "abc", "012"],
               partial(toReader(?_, Unit)),
-              s => s.foldl(a + b.len().uint, 0u).toReader(Unit),
-              unit()
+              s => s.foldl(a + b.len().uint, 0u).toReader(Unit)
             ),
-            rightIdentitySpec({0..9}, partial(toReader(?_, cfloat)), 165.8),
+            rightIdentitySpec(
+              Reader[cfloat, auto]((_: cfloat) => {0i16 .. 9i16}),
+              toReader
+            ),
             associativitySpec(
-              ([0, 7], 'a'),
-              partial(toReader(?_, string)),
-              t => t[0].foldl(a + b, 0).plus(t[1].ord()).toReader(string),
-              (i: int) => i.modulo(2).toReader(string),
-              "0123"
+              (@[0, 7], 'a').toReader(string),
+              (t: (seq[int], char)) =>
+                t[0].foldl(a + b, 0).plus(t[1].ord()).toReader(string)
+              ,
+              (i: int) => i.modulo(2).toReader(string)
             )
-          )
+          ),
+          (unit(), 5.2, "abc")
         )
 
 
