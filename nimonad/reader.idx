@@ -1,0 +1,9 @@
+Reader	nimonad/reader.html#Reader	reader: Reader	
+ask	nimonad/reader.html#ask,typedesc	reader: ask(S: typedesc): Reader[S, S]	
+ask	nimonad/reader.html#ask	reader: ask[S](): Reader[S, S]	
+toReader	nimonad/reader.html#toReader,T,typedesc	reader: toReader[T](value: T; S: typedesc): Reader[S, T]	
+toReader	nimonad/reader.html#toReader,T	reader: toReader[S; T](value: T): Reader[S, T]	
+run	nimonad/reader.html#run,Reader[S,T],S	reader: run[S; T](self: Reader[S, T]; state: S): T	
+map	nimonad/reader.html#map,Reader[S,A],	reader: map[S; A; B](self: Reader[S, A]; f: A -&gt; B): Reader[S, B]	
+flatMap	nimonad/reader.html#flatMap,Reader[S,A],	reader: flatMap[S; A; B](self: Reader[S, A]; f: A -&gt; Reader[S, B]): Reader[S, B]	
+local	nimonad/reader.html#local,Reader[S,T],	reader: local[S; T](self: Reader[S, T]; f: S -&gt; S): Reader[S, T]	
