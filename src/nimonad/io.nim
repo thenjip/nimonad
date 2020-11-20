@@ -1,12 +1,9 @@
 ##[
-  The Io monad from Haskell.
+  The `IO` monad from Haskell.
 
   It lets one build a computation that has no parameters.
   It can also be used as a wrapper for computations that interact with external
   resources such as memory management, FFI, I/O, etc. .
-
-  Examples can be found
-  [here](https://github.com/thenjip/nimonad/examples/monad/io).
 ]##
 
 
@@ -65,8 +62,9 @@ when not defined(nimscript):
     `finally`: A -> Unit
   ): Io[B] =
     ##[
-      Any exception raised in `try` will be reraised in the returned `Io`.
-      Whether an exception was raised, `finally` will be executed once.
+      Any exception raised in `try` will be reraised by the returned `Io`.
+
+      `finally` will be executed once, regardless of exception raising.
     ]##
     before.map(
       proc (a: A): B =
