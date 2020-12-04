@@ -102,12 +102,12 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#AssociativityFlatMappers"
     title="AssociativityFlatMappers[A; B; MA; MB; MC] = tuple[first: FlatMapper[MA, A, MB],
-    second: FlatMapper[MB, B, MC], outer: FlatMapper[MA, A, MC]]"><wbr />Associativity<wbr />Flat<wbr />Mappers<span class="attachedType"></span></a></li>
+    second: FlatMapper[MB, B, MC], outer: FlatMapper[MA, A, MC]]">AssociativityFlatMappers</a></li>
   <li><a class="reference" href="#MonadLawsFlatMappers"
     title="MonadLawsFlatMappers[LA; LMA; LMB; RT; RM; AA; AB; AMA; AMB; AMC] = tuple[
     leftIdentity: FlatMapper[LMA, LA, LMB],
     rightIdentity: FlatMapper[RM, RT, RM],
-    associativity: AssociativityFlatMappers[AA, AB, AMA, AMB, AMC]]"><wbr />Monad<wbr />Laws<wbr />Flat<wbr />Mappers<span class="attachedType"></span></a></li>
+    associativity: AssociativityFlatMappers[AA, AB, AMA, AMB, AMC]]">MonadLawsFlatMappers</a></li>
 
   </ul>
 </li>
@@ -118,7 +118,7 @@ function main() {
       <li><a class="reference" href="#associativityFlatMappers%2CFlatMapper%5BMA%2CA%2CMB%5D%2CFlatMapper%5BMB%2CB%2CMC%5D%2CFlatMapper%5BMA%2CA%2CMC%5D"
     title="associativityFlatMappers[A; B; MA; MB; MC](first: FlatMapper[MA, A, MB];
     second: FlatMapper[MB, B, MC]; outer: FlatMapper[MA, A, MC]): AssociativityFlatMappers[
-    A, B, MA, MB, MC]">associativityFlatMappers,FlatMapper[MA,A,MB],FlatMapper[MB,B,MC],FlatMapper[MA,A,MC]<span class="attachedType">AssociativityFlatMappers</span></a></li>
+    A, B, MA, MB, MC]">associativityFlatMappers,<wbr>FlatMapper[MA,<wbr>A,<wbr>MB],<wbr>FlatMapper[MB,<wbr>B,<wbr>MC],<wbr>FlatMapper[MA,<wbr>A,<wbr>MC]</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">monadLawsFlatMappers
@@ -127,7 +127,7 @@ function main() {
     leftIdentity: FlatMapper[LMA, LA, LMB];
     rightIdentity: FlatMapper[RM, RT, RM];
     associativity: AssociativityFlatMappers[AA, AB, AMA, AMB, AMC]): MonadLawsFlatMappers[
-    LA, LMA, LMB, RT, RM, AA, AB, AMA, AMB, AMC]">monadLawsFlatMappers,FlatMapper[LMA,LA,LMB],FlatMapper[RM,RT,RM],AssociativityFlatMappers[AA,AB,AMA,AMB,AMC]<span class="attachedType">MonadLawsFlatMappers</span></a></li>
+    LA, LMA, LMB, RT, RM, AA, AB, AMA, AMB, AMC]">monadLawsFlatMappers,<wbr>FlatMapper[LMA,<wbr>LA,<wbr>LMB],<wbr>FlatMapper[RM,<wbr>RT,<wbr>RM],<wbr>AssociativityFlatMappers[AA,<wbr>AB,<wbr>AMA,<wbr>AMB,<wbr>AMC]</a></li>
 
   </ul>
 
@@ -138,11 +138,11 @@ function main() {
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#instantiateAssociativity.m%2C%2Ctyped%2Ctyped%2Ctyped%2Ctyped%2Ctyped"
     title="instantiateAssociativity[IMA; IA; IMB](instance: FlatMapper[IMA, IA, IMB]{sym};
-                                       A, B, MA, MB, MC: typed): auto"><wbr />instantiate<wbr />Associativity<span class="attachedType"></span></a></li>
+                                       A, B, MA, MB, MC: typed): auto">instantiateAssociativity</a></li>
   <li><a class="reference" href="#instantiateMonadLaws.m%2C%2Ctyped%2Ctyped%2Ctyped%2Ctyped%2Ctyped%2Ctyped%2Ctyped%2Ctyped%2Ctyped%2Ctyped"
     title="instantiateMonadLaws[IMA; IA; IMB](instance: FlatMapper[IMA, IA, IMB]{sym};
                                    LA, LMA, LMB: typed; RT, RM: typed;
-                                   AA, AB, AMA, AMB, AMC: typed): auto"><wbr />instantiate<wbr />Monad<wbr />Laws<span class="attachedType"></span></a></li>
+                                   AA, AB, AMA, AMB, AMC: typed): auto">instantiateMonadLaws</a></li>
 
   </ul>
 </li>
@@ -265,7 +265,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2020-12-01 20:41:35 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2020-12-04 10:55:28 UTC</small>
       </div>
     </div>
   </div>
