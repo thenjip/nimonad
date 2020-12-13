@@ -1,6 +1,5 @@
 import "project.nims"
 
-import pkg/funcynim/[call]
 import pkg/taskutils/[dirs, filetypes, optional]
 
 import std/[os, sugar]
@@ -43,4 +42,4 @@ func outputDirBuilder (self: Task): OutputDirBuilder =
 
 
 func outputDir* (self: Task): Option[AbsoluteDir] =
-  self.outputDirBuilder().call()
+  self.outputDirBuilder()()
