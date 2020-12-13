@@ -2,7 +2,6 @@ import common/"dirs.nims" as taskdirs
 import common/["project.nims"]
 import test/["env.nims", taskconfig]
 
-import pkg/funcynim/[ifelse]
 import pkg/taskutils/[
   cmdline,
   dirs,
@@ -33,33 +32,32 @@ func tryParseEnvConfig (): TaskConfig =
 
 
 func srcGenDir (backend: Backend): AbsoluteDir =
-  func addPlatformDirIfNotJs (dir: DirPath): DirPath =
-    backend
-      .`==`(Backend.Js)
-      .ifElse(() => dir, () => dir.crossCompilerCache())
-
   Task.Test
     .outputDir()
     .map(outputDir => outputDir / backend.envVarValue())
-    .map(addPlatformDirIfNotJs)
-    .get()
+    .map(
+      proc (backendDir: auto): auto =
+        if backend == Backend.Js:
+          backendDir
+        else:
+          backendDir.crossCompilerCache()
+    ).get()
 
 
-func binGenDir (backend: Backend): AbsoluteDir =
-  let srcGenDir = backend.srcGenDir()
-
-  backend
-    .`==`(Backend.Js)
-    .ifElse(() => srcGenDir, () => srcGenDir / binGenDirName())
+proc binGenDir (backend: Backend; module: AbsoluteFile): AbsoluteDir =
+  backend.srcGenDir().joinPath(binGenDirName(), module.relativePath(srcDir()))
 
 
 
 func jsFlags (backend: Backend): seq[string] =
-  backend.`==`(Backend.Js).ifElse(() => @["-d:nodejs"], () => @[])
+  if backend == Backend.Js:
+    @["-d:nodejs"]
+  else:
+    @[]
 
 
 
-func compileAndRunCmdOptions (
+proc compileAndRunCmdOptions (
   module: AbsoluteFile;
   config: TaskConfig
 ): seq[string] =
@@ -70,12 +68,12 @@ func compileAndRunCmdOptions (
       backend.jsFlags(),
       {
         "nimcache": backend.srcGenDir(),
-        "outdir": backend.binGenDir()
+        "outdir": backend.binGenDir(module)
       }.toNimLongOptions()
     )
 
 
-func compileAndRunCmd (module: AbsoluteFile; config: TaskConfig): string =
+proc compileAndRunCmd (module: AbsoluteFile; config: TaskConfig): string =
   @[config.backend.nimCmdName()]
     .concat(module.compileAndRunCmdOptions(config), @[module.quoteShell()])
     .cmdLine()
