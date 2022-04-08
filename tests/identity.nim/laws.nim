@@ -1,4 +1,8 @@
-import ../../../identity, ../../../laws
+import pkg/nimonad/[identity, laws]
+
+
+
+export laws
 
 
 
