@@ -10,11 +10,7 @@ license = "MIT"
 
 srcDir = srcDirName()
 
-requires "nim >= 1.4.2"
-requires [
-  "https://github.com/thenjip/funcynim >= 0.2.3",
-  "https://github.com/thenjip/taskutils >= 0.2.2" # Only required for the tasks.
-]
+requires "nim >= 1.6.0", "https://github.com/thenjip/funcynim >= 1.0.0"
 
 
 

@@ -22,12 +22,8 @@ nimble install 'https://github.com/thenjip/nimonad'
 
 ### Dependencies
 
-- [`nim`](https://nim-lang.org/) >= `1.4.2`
-- [`funcynim`](https://github.com/thenjip/funcynim) >= `0.2.3`
-
-To run Nimble tasks:
-
-- [`taskutils`](https://github.com/thenjip/taskutils) >= `0.2.2`
+- [`nim`](https://nim-lang.org/) >= `1.6.0`
+- [`funcynim`](https://github.com/thenjip/funcynim) >= `1.0.0`
 
 ## Documentation
 
