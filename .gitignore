@@ -1,4 +1,6 @@
-.nimblecache/
-nimbledeps/
+/nimble-build/
 
-.vscode/
+/nimbledeps/
+/config.nims
+
+/.vscode/
