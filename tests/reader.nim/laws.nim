@@ -1,6 +1,10 @@
-import ../../../reader, ../../../laws
+import pkg/nimonad/[reader, laws]
 
 import pkg/funcynim/[partialproc]
+
+
+
+export laws
 
 
 
