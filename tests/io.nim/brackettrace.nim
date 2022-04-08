@@ -1,24 +1,21 @@
 import varutils
-import ../../../io, ../../../optional
 
-import pkg/funcynim/[call, chain, partialproc, unit]
+import pkg/nimonad/[io, optional]
+
+import pkg/funcynim/[chain, partialproc, run, unit]
 
 import std/[sugar]
 
 
 
-export call, chain, partialproc, varutils
-
-
-
 type
-  BracketStep* {.pure.} = enum
+  Step* {.pure.} = enum
     Before
     Between
     After
 
-  BracketTrace* [T] = tuple
-    steps: seq[BracketStep]
+  Trace* [T] = tuple
+    steps: seq[Step]
     output: T ## The output of the returned `Io[T]` by a `BracketCreator`.
 
   BracketCreator* [A; B] =
@@ -26,35 +23,37 @@ type
 
 
 
-func bracketTrace* [T](steps: seq[BracketStep]; output: T): BracketTrace[T] =
+func trace* [T](steps: seq[Step]; output: T): Trace[T] =
   (steps, output)
 
 
 
-template trace* [A; B](
+template trace [A; B](
   self: BracketCreator[A, B];
   before: Io[A];
   between: A -> B;
   after: A -> Unit;
-  steps: var seq[BracketStep]
+  steps: var seq[Step]
 ): Io[B] =
-  self.call(
-    before.map(partial(steps.addAndReturn(BracketStep.Before, ?_))),
-    between.chain(partial(steps.addAndReturn(BracketStep.Between, ?_))),
-    after.chain(partial(steps.addAndReturn(BracketStep.After, ?_)))
+  bind map, chain, addAndReturn
+
+  self(
+    map(before, partial(addAndReturn(steps, Step.Before, ?_))),
+    chain(between, partial(addAndReturn(steps, Step.Between, ?_))),
+    chain(after, partial(addAndReturn(steps, Step.After, ?_)))
   )
 
 
-template traceWithException* [A; B; E: Exception](
+template traceWithException [A; B; E: Exception](
   self: BracketCreator[A, B];
   before: Io[A];
   between: proc (a: A): B {.raises: [].};
   exception: () -> ref E;
-  steps: var seq[BracketStep]
+  steps: var seq[Step]
 ): Io[B] =
   self.trace(
     before,
-    between.chain(proc (_: B): B = raise exception.call),
+    chain(between, proc (_: B): B = raise run(exception)),
     doNothing[A],
     steps
   )
@@ -66,16 +65,14 @@ func trace* [A; B](
   before: Io[A];
   between: A -> B;
   after: A -> Unit
-): Io[BracketTrace[B]] =
+): Io[Trace[B]] =
   (
-    proc (): BracketTrace[B] =
-      var steps = newSeqOfCap[BracketStep](
-        {BracketStep.low() .. BracketStep.high()}.card()
-      )
+    proc (): Trace[B] =
+      var steps = newSeqOfCap[Step]({Step.low() .. Step.high()}.card())
 
       self
         .trace(before, between, after, steps)
-        .map(partial(bracketTrace(steps, ?:B)))
+        .map(partial(trace(steps, ?:B)))
         .run()
   )
 
@@ -85,10 +82,10 @@ func traceSteps* [A; B; E: Exception](
   before: Io[A];
   between: proc (a: A): B {.raises: [].};
   exception: () -> ref E
-): Io[seq[BracketStep]] =
+): Io[seq[Step]] =
   (
-    proc (): seq[BracketStep] =
-      var steps = newSeqOfCap[BracketStep](1)
+    proc (): seq[Step] =
+      var steps = newSeqOfCap[Step](1)
 
       try:
         self
@@ -106,16 +103,16 @@ when not defined(nimscript):
     before: Io[A];
     between: proc (a: A): B {.raises: [].};
     exception: () -> ref E
-  ): Io[BracketTrace[Optional[ref E]]] =
+  ): Io[Trace[Optional[ref E]]] =
     (
-      proc (): BracketTrace[Optional[ref E]] =
-        var steps = newSeqOfCap[BracketStep](1)
+      proc (): Trace[Optional[ref E]] =
+        var steps = newSeqOfCap[Step](1)
 
         try:
           self
             .traceWithException(before, between, exception, steps)
-            .map((_: B) => bracketTrace(steps, none(ref E)))
+            .map((_: B) => trace(steps, none(ref E)))
             .run()
         except E as e:
-          bracketTrace(steps, e.some())
+          trace(steps, e.some())
     )

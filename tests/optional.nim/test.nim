@@ -116,7 +116,7 @@ when isMainModule:
         "time compatible."
       ].join($' '):
         when defined(js):
-          skip()
+          skip() # https://github.com/nim-lang/Nim/issues/12492
         else:
           proc doTest () =
             const results = (
