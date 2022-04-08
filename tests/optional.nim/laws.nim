@@ -1,4 +1,8 @@
-import ../../../optional, ../../../laws
+import pkg/nimonad/[laws, optional]
+
+
+
+export laws
 
 
 
