@@ -1,4 +1,4 @@
-name: Tests
+name: 'Tests'
 on:
   push:
     branches-ignore:
@@ -13,34 +13,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        nim_version: ['1.4.2']
-        backend: ['c', 'cxx', 'js']
+        nim_version: ['1.6.0', '1.6.2', '1.6.4']
+        backend: ['c', 'cxx', 'objc', 'js']
 
     name: 'Unit tests: Nim ${{ matrix.nim_version }}, backend ${{ matrix.backend }}'
-    runs-on: ubuntu-latest
-    container: 'nimlang/nim:${{ matrix.nim_version }}-alpine'
-    timeout-minutes: 10
-
-    steps:
-      - name: 'Checkout'
-        uses: 'actions/checkout@v2'
-
-      - name: 'Install the dependencies'
-        run: nimble install -dy
-
-      - name: 'Build and run the tests'
-        env:
-          NIM_BACKEND: '${{ matrix.backend }}'
-        run: nimble test
-
-  unit_tests_objc:
-    strategy:
-      fail-fast: false
-      matrix:
-        nim_version: ['1.4.2']
-
-    name: 'Unit tests: Nim ${{ matrix.nim_version }}, backend objc'
-    runs-on: ubuntu-latest
+    runs-on: 'ubuntu-latest'
     container: 'nimlang/nim:${{ matrix.nim_version }}-alpine'
     timeout-minutes: 10
 
@@ -49,15 +26,14 @@ jobs:
         uses: 'actions/checkout@v2'
 
       - name: 'Setup Objective-C'
+        if: matrix.backend == 'objc'
         run: |
           apk add --no-cache gcc-objc
-          mkdir -p ~/.config/nim && \
-            echo 'gcc.objc.options.linker = "-lobjc"' > ~/.config/nim/nim.cfg
+          nim_cfg_dir="$HOME/.config/nim"
+          mkdir -p "$nim_cfg_dir" && cp 'ci/tests/objc/nim.cfg' "$nim_cfg_dir/"
 
-      - name: 'Install the dependencies'
+      - name: 'Install the dependencies of the project'
         run: nimble install -dy
 
       - name: 'Build and run the tests'
-        env:
-          NIM_BACKEND: 'objc'
-        run: nimble test
+        run: nimble test-${{ matrix.backend }}
