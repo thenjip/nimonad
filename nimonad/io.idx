@@ -1,8 +1,0 @@
-Io	nimonad/io.html#Io	io: Io	
-toIo	nimonad/io.html#toIo,T	io: toIo[T](value: T): Io[T]	
-run	nimonad/io.html#run,Io[T]	io: run[T](self: Io[T]): T	
-map	nimonad/io.html#map,Io[A],	io: map[A; B](self: Io[A]; f: A -&gt; B): Io[B]	
-flatten	nimonad/io.html#flatten,Io[Io[T]]	io: flatten[T](self: Io[Io[T]]): Io[T]	
-flatMap	nimonad/io.html#flatMap,Io[A],	io: flatMap[A; B](self: Io[A]; f: A -&gt; Io[B]): Io[B]	
-bracket	nimonad/io.html#bracket,Io[A],,	io: bracket[A; B](before: Io[A]; between: A -&gt; B; after: A -&gt; Unit): Io[B]	
-tryBracket	nimonad/io.html#tryBracket,Io[A],,	io: tryBracket[A; B](before: Io[A]; try: A -&gt; B; finally: A -&gt; Unit): Io[B]	

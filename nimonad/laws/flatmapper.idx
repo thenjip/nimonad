@@ -1,2 +1,0 @@
-FlatMapper	nimonad/laws/flatmapper.html#FlatMapper	flatmapper: FlatMapper	
-flatMapper	nimonad/laws/flatmapper.html#flatMapper_2	flatmapper: flatMapper[MA; A; MB](self: (MA, A -&gt; MB) -&gt; MB): FlatMapper[MA, A, MB]	
