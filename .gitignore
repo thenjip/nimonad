@@ -1,0 +1,11 @@
+/.jekyll-cache/
+/.jekyll-metadata/
+/.sass-cache/
+/_site/
+
+/.vscode/
+
+/nimble-build/
+
+/nimbledeps/
+/config.nims
