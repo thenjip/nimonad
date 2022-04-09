@@ -1,8 +1,0 @@
-LeftIdentitySpec	nimonad/laws/specs.html#LeftIdentitySpec	specs: LeftIdentitySpec	
-RightIdentitySpec	nimonad/laws/specs.html#RightIdentitySpec	specs: RightIdentitySpec	
-AssociativitySpec	nimonad/laws/specs.html#AssociativitySpec	specs: AssociativitySpec	
-MonadLawsSpec	nimonad/laws/specs.html#MonadLawsSpec	specs: MonadLawsSpec	
-leftIdentitySpec	nimonad/laws/specs.html#leftIdentitySpec,A,,	specs: leftIdentitySpec[A; MA; MB](initial: A; lift: A -&gt; MA; f: A -&gt; MB): LeftIdentitySpec[\n    A, MA, MB]	
-rightIdentitySpec	nimonad/laws/specs.html#rightIdentitySpec,M,	specs: rightIdentitySpec[T; M](initial: M; lift: T -&gt; M): RightIdentitySpec[T, M]	
-associativitySpec	nimonad/laws/specs.html#associativitySpec,MA,,	specs: associativitySpec[A; B; MA; MB; MC](initial: MA; f: A -&gt; MB; g: B -&gt; MC): AssociativitySpec[\n    A, B, MA, MB, MC]	
-monadLawsSpec	nimonad/laws/specs.html#monadLawsSpec,LeftIdentitySpec[LA,LMA,LMB],RightIdentitySpec[RT,RM],AssociativitySpec[AA,AB,AMA,AMB,AMC]	specs: monadLawsSpec[LA; LMA; LMB; RT; RM; AA; AB; AMA; AMB; AMC](\n    leftIdentity: LeftIdentitySpec[LA, LMA, LMB];\n    rightIdentity: RightIdentitySpec[RT, RM];\n    associativity: AssociativitySpec[AA, AB, AMA, AMB, AMC]): MonadLawsSpec[LA,\n    LMA, LMB, RT, RM, AA, AB, AMA, AMB, AMC]	
