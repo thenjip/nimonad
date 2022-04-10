@@ -1,0 +1,7 @@
+Verdict	nimonad/laws/verdict.html#Verdict	verdict: Verdict	
+MonadLawsVerdict	nimonad/laws/verdict.html#MonadLawsVerdict	verdict: MonadLawsVerdict	
+verdict	nimonad/laws/verdict.html#verdict,T,T	verdict: verdict[T](actual, expected: T): Verdict[T]	
+monadLawsVerdict	nimonad/laws/verdict.html#monadLawsVerdict,Verdict[L],Verdict[R],Verdict[A]	verdict: monadLawsVerdict[L; R; A](leftIdentity: Verdict[L]; rightIdentity: Verdict[R];\n                          associativity: Verdict[A]): MonadLawsVerdict[L, R, A]	
+map	nimonad/laws/verdict.html#map,Verdict[A],	verdict: map[A; B](self: Verdict[A]; f: A -&gt; B): Verdict[B]	
+map	nimonad/laws/verdict.html#map,MonadLawsVerdict[LA,RA,AA],,,	verdict: map[LA; RA; AA; LB; RB; AB](self: MonadLawsVerdict[LA, RA, AA];\n                            fLeftId: LA -&gt; LB; fRightId: RA -&gt; RB;\n                            fAssoc: AA -&gt; AB): MonadLawsVerdict[LB, RB, AB]	
+map	nimonad/laws/verdict.html#map,MonadLawsVerdict[LA,RA,AA],tuple[,,]	verdict: map[LA; RA; AA; LB; RB; AB](self: MonadLawsVerdict[LA, RA, AA]; f: tuple[\n    leftId: LA -&gt; LB, rightId: RA -&gt; RB, assoc: AA -&gt; AB]): MonadLawsVerdict[LB,\n    RB, AB]	
