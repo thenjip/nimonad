@@ -6,13 +6,22 @@
 
 
 
+import pkg/funcynim/[into, itself]
+
 import std/[sugar]
 
 
 
 func itself* [T](value: T): T =
-  value
+  itself.itself(value)
 
 
-proc apply* [A; B](self: A; f: A -> B): B =
-  self.f()
+
+proc into* [A; B](self: A; f: A -> B): B =
+  into.into(self, f)
+
+
+proc apply* [A; B](self: A; f: A -> B): B {.
+  deprecated: """Since "0.2.0". Use "into" instead."""
+.} =
+  identity.into(self, f)
