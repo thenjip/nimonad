@@ -18,6 +18,7 @@ func itself* [T](value: T): T =
 
 
 proc into* [A; B](self: A; f: A -> B): B =
+  ## Since `0.2.0`.
   into.into(self, f)
 
 
