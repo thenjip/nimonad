@@ -10,9 +10,9 @@
 
 
 
-import predicate, reader
+import identity, predicate, reader
 
-import pkg/funcynim/[chain, fold, itself, partialproc, run, unit]
+import pkg/funcynim/[chain, fold, partialproc, run, unit]
 
 import std/[strformat, sugar]
 
@@ -121,12 +121,12 @@ proc map* [A; B](self: Optional[A]; f: A -> B): Optional[B] =
 
 
 func flatten* [T](self: Optional[Optional[T]]): Optional[T] =
-  self.flatMap(itself.itself)
+  self.flatMap(itself)
 
 
 
 proc unboxOr* [T](self: Optional[T]; `else`: () -> T): T =
-  self.ifSome(itself.itself, `else`)
+  self.ifSome(itself, `else`)
 
 
 
