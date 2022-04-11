@@ -1,9 +1,9 @@
 when isMainModule:
   import predicatetrace
 
-  import pkg/nimonad/[predicate]
+  import pkg/nimonad/[identity, predicate]
 
-  import pkg/funcynim/[chain, itself, partialproc, run, unit]
+  import pkg/funcynim/[chain, partialproc, run, unit]
 
   import std/[strutils, sugar, unittest]
 
@@ -87,7 +87,7 @@ when isMainModule:
             actual == expected
 
 
-        doTest(alwaysTrue[Unit], itself.itself[Unit], itself.itself, unit())
+        doTest(alwaysTrue[Unit], itself[Unit], itself, unit())
         doTest((i: int16) => i > 500, partial($ ?_), _ => "abc", 542)
 
 

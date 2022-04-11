@@ -1,9 +1,9 @@
 when isMainModule:
   import brackettrace, laws
 
-  import pkg/nimonad/[io, optional]
+  import pkg/nimonad/[identity, io, optional]
 
-  import pkg/funcynim/[itself, partialproc, run, unit]
+  import pkg/funcynim/[partialproc, run, unit]
 
   import std/[sequtils, strutils, sugar, unittest]
 
@@ -115,7 +115,7 @@ when isMainModule:
 
         doTest(
           () => "abc",
-          itself.itself[string],
+          itself[string],
           () => FloatDivByZeroDefect.newException("")
         )
 

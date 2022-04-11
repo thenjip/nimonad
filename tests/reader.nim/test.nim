@@ -1,9 +1,9 @@
 when isMainModule:
   import laws
 
-  import pkg/nimonad/[reader]
+  import pkg/nimonad/[identity, reader]
 
-  import pkg/funcynim/[itself, operators, partialproc, unit]
+  import pkg/funcynim/[operators, partialproc, unit]
 
   import std/[macros, sequtils, strutils, sugar, unittest]
 

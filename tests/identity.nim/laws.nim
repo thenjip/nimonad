@@ -15,4 +15,4 @@ type
 proc checkLaws* [LA; LB; RT; AA; AB; AC](
   self: IdentityMonadLawsSpec[LA, LB, RT, AA, AB, AC]
 ): MonadLawsVerdict[LB, RT, AC] =
-  self.checkLaws(apply[int, int])
+  self.checkLaws(into[int, int])
