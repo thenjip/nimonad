@@ -15,7 +15,7 @@ when isMainModule:
 
 
   proc main () =
-    suite "io":
+    suite "nimonad/io":
       test """"Io[T]" should obey the monad laws.""":
         proc doTest [LA; LB; RT; AA; AB; AC](
           spec: IoMonadLawsSpec[LA, LB, RT, AA, AB, AC]

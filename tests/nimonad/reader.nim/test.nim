@@ -10,7 +10,7 @@ when isMainModule:
 
 
   proc main () =
-    suite "reader":
+    suite "nimonad/reader":
       test """"Reader[S, T]" should obey the monad laws.""":
         proc doTest [LA; LB; LS; RT; RS; AA; AB; AC; AS](
           spec: ReaderMonadLawsSpec[LA, LB, LS, RT, RS, AA, AB, AC, AS];

@@ -10,7 +10,7 @@ when isMainModule:
 
 
   proc main () =
-    suite "optional":
+    suite "nimonad/optional":
       test """"Nilable" should match standard "nil" types.""":
         proc doTest (T: typedesc) =
           check:

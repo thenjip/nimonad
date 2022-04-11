@@ -10,7 +10,7 @@ when isMainModule:
 
 
   proc main () =
-    suite "predicate":
+    suite "nimonad/predicate":
       test """"self.test(value)" should return the expected boolean.""":
         proc doTest [T](self: Predicate[T]; value: T; expected: bool) =
           let actual = self.test(value)
