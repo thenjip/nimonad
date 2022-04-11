@@ -10,7 +10,7 @@ when isMainModule:
 
 
   proc main() =
-    suite "identity":
+    suite "nimonad/identity":
       test """The identity monad should verify the monad laws.""":
         proc doTest [LA; LB; RT; AA; AB; AC](
           spec: IdentityMonadLawsSpec[LA, LB, RT, AA, AB, AC]
