@@ -99,16 +99,10 @@ window.addEventListener('DOMContentLoaded', main);
   </div>
   <ul class="simple simple-toc" id="toc-list">
 <li>
-  <a class="reference reference-toplevel" href="#6" id="56">Imports</a>
-  <ul class="simple simple-toc-section">
-    
-  </ul>
-</li>
-<li>
   <a class="reference reference-toplevel" href="#7" id="57">Types</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#Predicate"
-    title="Predicate[T] = Reader[T, bool]">Predicate</a></li>
+    title="Predicate[T] = T -&gt; bool">Predicate</a></li>
 
   </ul>
 </li>
@@ -128,6 +122,11 @@ window.addEventListener('DOMContentLoaded', main);
   <ul class="simple nested-toc-section">and
       <li><a class="reference" href="#and%2CPredicate%5BT%5D%2CPredicate%5BT%5D"
     title="`and`[T](self, then: Predicate[T]): Predicate[T]">`and`[T](self, then: Predicate[T]): Predicate[T]</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">fold
+      <li><a class="reference" href="#fold%2CPredicate%5BA%5D%2C%2C"
+    title="fold[A; B](self: Predicate[A]; then, else: A -&gt; B): A -&gt; B">fold[A; B](self: Predicate[A]; then, else: A -&gt; B): A -&gt; B</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">ifElse
@@ -158,31 +157,26 @@ window.addEventListener('DOMContentLoaded', main);
 
   </div>
   &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/f34a65ff6a1ff9379ba38f1ecdccbd8add90ad1a/src/nimonad/predicate.nim#L1"
+href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/predicate.nim#L1"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/f34a65ff6a1ff9379ba38f1ecdccbd8add90ad1a/src/nimonad/predicate.nim#L1" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/predicate.nim#L1" class="link-seesrc" target="_blank" >Edit</a>
 
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
   
   <p class="module-desc"></p>
-  <div class="section" id="6">
-<h1><a class="toc-backref" href="#6">Imports</a></h1>
-<dl class="item">
-<a class="reference external" href="reader.html">reader</a>
-</dl></div>
-<div class="section" id="7">
+  <div class="section" id="7">
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
 <div id="Predicate">
-<dt><pre><a href="predicate.html#Predicate"><span class="Identifier">Predicate</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span class="Other">=</span> <a href="reader.html#Reader"><span class="Identifier">Reader</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">,</span> <span class="Identifier">bool</span><span class="Other">]</span></pre></dt>
+<dt><pre><a href="predicate.html#Predicate"><span class="Identifier">Predicate</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> <span class="Other">=</span> <span class="Identifier">T</span> <span class="Operator">-&gt;</span> <span class="Identifier">bool</span></pre></dt>
 <dd>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/f34a65ff6a1ff9379ba38f1ecdccbd8add90ad1a/src/nimonad/predicate.nim#L10"
+href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/predicate.nim#L8"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/f34a65ff6a1ff9379ba38f1ecdccbd8add90ad1a/src/nimonad/predicate.nim#L10" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/predicate.nim#L8" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -197,9 +191,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 The returned predicate will use the short circuiting <tt class="docutils literal"><span class="pre"><span class="Keyword">and</span></span></tt>. 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/f34a65ff6a1ff9379ba38f1ecdccbd8add90ad1a/src/nimonad/predicate.nim#L23"
+href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/predicate.nim#L21"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/f34a65ff6a1ff9379ba38f1ecdccbd8add90ad1a/src/nimonad/predicate.nim#L23" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/predicate.nim#L21" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -209,9 +203,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/f34a65ff6a1ff9379ba38f1ecdccbd8add90ad1a/src/nimonad/predicate.nim#L19"
+href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/predicate.nim#L17"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/f34a65ff6a1ff9379ba38f1ecdccbd8add90ad1a/src/nimonad/predicate.nim#L19" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/predicate.nim#L17" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -221,9 +215,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 The returned predicate will use the short circuiting <tt class="docutils literal"><span class="pre"><span class="Keyword">or</span></span></tt>. 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/f34a65ff6a1ff9379ba38f1ecdccbd8add90ad1a/src/nimonad/predicate.nim#L30"
+href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/predicate.nim#L28"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/f34a65ff6a1ff9379ba38f1ecdccbd8add90ad1a/src/nimonad/predicate.nim#L30" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/predicate.nim#L28" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -233,9 +227,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/f34a65ff6a1ff9379ba38f1ecdccbd8add90ad1a/src/nimonad/predicate.nim#L46"
+href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/predicate.nim#L51"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/f34a65ff6a1ff9379ba38f1ecdccbd8add90ad1a/src/nimonad/predicate.nim#L46" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/predicate.nim#L51" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -245,21 +239,37 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/f34a65ff6a1ff9379ba38f1ecdccbd8add90ad1a/src/nimonad/predicate.nim#L50"
+href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/predicate.nim#L55"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/f34a65ff6a1ff9379ba38f1ecdccbd8add90ad1a/src/nimonad/predicate.nim#L50" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/predicate.nim#L55" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+</div>
+<div id="fold,Predicate[A],,">
+<dt><pre><span class="Keyword">func</span> <a href="#fold%2CPredicate%5BA%5D%2C%2C"><span class="Identifier">fold</span></a><span class="Other">[</span><span class="Identifier">A</span><span class="Other">;</span> <span class="Identifier">B</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="predicate.html#Predicate"><span class="Identifier">Predicate</span></a><span class="Other">[</span><span class="Identifier">A</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">then</span><span class="Other">,</span> <span class="Identifier">else</span><span class="Other">:</span> <span class="Identifier">A</span> <span class="Operator">-&gt;</span> <span class="Identifier">B</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">A</span> <span class="Operator">-&gt;</span> <span class="Identifier">B</span></pre></dt>
+<dd>
+
+Since <tt class="docutils literal"><span class="pre"><span class="FloatNumber">0.2</span><span class="Operator">.</span><span class="DecNumber">0</span></span></tt>.
+&nbsp;&nbsp;<a
+href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/predicate.nim#L36"
+class="link-seesrc" target="_blank">Source</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/predicate.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
 <div id="ifElse,Predicate[A],,">
-<dt><pre><span class="Keyword">func</span> <a href="#ifElse%2CPredicate%5BA%5D%2C%2C"><span class="Identifier">ifElse</span></a><span class="Other">[</span><span class="Identifier">A</span><span class="Other">;</span> <span class="Identifier">B</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="predicate.html#Predicate"><span class="Identifier">Predicate</span></a><span class="Other">[</span><span class="Identifier">A</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">then</span><span class="Other">,</span> <span class="Identifier">else</span><span class="Other">:</span> <span class="Identifier">A</span> <span class="Operator">-&gt;</span> <span class="Identifier">B</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">A</span> <span class="Operator">-&gt;</span> <span class="Identifier">B</span></pre></dt>
+<dt><pre><span class="Keyword">func</span> <a href="#ifElse%2CPredicate%5BA%5D%2C%2C"><span class="Identifier">ifElse</span></a><span class="Other">[</span><span class="Identifier">A</span><span class="Other">;</span> <span class="Identifier">B</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="predicate.html#Predicate"><span class="Identifier">Predicate</span></a><span class="Other">[</span><span class="Identifier">A</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">then</span><span class="Other">,</span> <span class="Identifier">else</span><span class="Other">:</span> <span class="Identifier">A</span> <span class="Operator">-&gt;</span> <span class="Identifier">B</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">A</span> <span class="Operator">-&gt;</span> <span class="Identifier">B</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">deprecated</span><span class="Other">:</span> <span class="StringLit">&quot;&quot;&quot;Since &quot;0.2.0&quot;. Use &quot;fold&quot; instead.&quot;&quot;&quot;</span></span>.}</pre></dt>
 <dd>
+  <div class="deprecation-message">
+    <b>Deprecated:</b> Since &quot;0.2.0&quot;. Use &quot;fold&quot; instead.
+  </div>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/f34a65ff6a1ff9379ba38f1ecdccbd8add90ad1a/src/nimonad/predicate.nim#L38"
+href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/predicate.nim#L44"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/f34a65ff6a1ff9379ba38f1ecdccbd8add90ad1a/src/nimonad/predicate.nim#L38" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/predicate.nim#L44" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -269,9 +279,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/f34a65ff6a1ff9379ba38f1ecdccbd8add90ad1a/src/nimonad/predicate.nim#L14"
+href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/predicate.nim#L12"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/f34a65ff6a1ff9379ba38f1ecdccbd8add90ad1a/src/nimonad/predicate.nim#L14" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/predicate.nim#L12" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -285,7 +295,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2022-04-11 19:04:52 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2022-04-15 15:00:19 UTC</small>
       </div>
     </div>
   </div>

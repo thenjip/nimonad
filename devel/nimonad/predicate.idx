@@ -3,6 +3,7 @@ test	nimonad/predicate.html#test,Predicate[T],T	predicate: test[T](self: Predica
 `not`	nimonad/predicate.html#not,Predicate[T]	predicate: `not`[T](self: Predicate[T]): Predicate[T]	
 `and`	nimonad/predicate.html#and,Predicate[T],Predicate[T]	predicate: `and`[T](self, then: Predicate[T]): Predicate[T]	
 `or`	nimonad/predicate.html#or,Predicate[T],Predicate[T]	predicate: `or`[T](self, else: Predicate[T]): Predicate[T]	
+fold	nimonad/predicate.html#fold,Predicate[A],,	predicate: fold[A; B](self: Predicate[A]; then, else: A -&gt; B): A -&gt; B	
 ifElse	nimonad/predicate.html#ifElse,Predicate[A],,	predicate: ifElse[A; B](self: Predicate[A]; then, else: A -&gt; B): A -&gt; B	
 alwaysFalse	nimonad/predicate.html#alwaysFalse,T	predicate: alwaysFalse[T](_: T): bool	
 alwaysTrue	nimonad/predicate.html#alwaysTrue,T	predicate: alwaysTrue[T](_: T): bool	
