@@ -53,8 +53,13 @@ func none* (T: typedesc[not Nilable]): Optional[T] =
   Optional[T](empty: true)
 
 
-func none* [T](): Optional[T] =
+func none* [T](_: Unit): Optional[T] =
+  ## Since `0.2.0`.
   T.none()
+
+
+func none* [T](): Optional[T] {.deprecated: """Since "0.2.0".""".} =
+  none(unit())
 
 
 
@@ -97,12 +102,21 @@ func isSome* [T](self: Optional[T]): bool =
 
 
 
-proc ifNone* [A; B](self: Optional[A]; then: () -> B; `else`: A -> B): B =
-  self.isNone().fold((_: Unit) => then.run(), (_: Unit) => self.value.`else`())
+proc fold* [A; B](self: Optional[A]; then: A -> B; `else`: Unit -> B): B =
+  ## Since `0.2.0`.
+  self.isSome().fold((_: Unit) => then.run(self.value), `else`)
 
 
-proc ifSome* [A; B](self: Optional[A]; then: A -> B; `else`: () -> B): B =
-  self.ifNone(`else`, then)
+proc ifNone* [A; B](self: Optional[A]; then: () -> B; `else`: A -> B): B {.
+  deprecated: """Since "0.2.0". Use "fold" instead."""
+.} =
+  self.fold(`else`, (_: Unit) => then.run())
+
+
+proc ifSome* [A; B](self: Optional[A]; then: A -> B; `else`: () -> B): B {.
+  deprecated: """Since "0.2.0". Use "fold" instead."""
+.} =
+  self.fold(then, (_: Unit) => `else`.run())
 
 
 
@@ -110,7 +124,7 @@ proc flatMap* [A; B](self: Optional[A]; f: A -> Optional[B]): Optional[B] =
   ##[
     Applies `f` to the value inside `self` or does nothing if `self` is empty.
   ]##
-  self.ifSome(f, none)
+  self.fold(f, none)
 
 
 proc map* [A; B](self: Optional[A]; f: A -> B): Optional[B] =
@@ -125,12 +139,18 @@ func flatten* [T](self: Optional[Optional[T]]): Optional[T] =
 
 
 
-proc unboxOr* [T](self: Optional[T]; `else`: () -> T): T =
-  self.ifSome(itself, `else`)
+proc unboxOr* [T](self: Optional[T]; `else`: Unit -> T): T =
+  self.fold(itself[T], `else`)
+
+
+proc unboxOr* [T](self: Optional[T]; `else`: () -> T): T {.
+  deprecated: """Since "0.2.0"."""
+.} =
+  self.unboxOr((_: Unit) => `else`.run())
 
 
 
-func raiseUnboxError [T](): T {.noinit, raises: [UnboxError].} =
+func raiseUnboxError [T](_: Unit): T {.noinit, raises: [UnboxError].} =
   raise UnboxError.newException("")
 
 
@@ -144,16 +164,15 @@ func unbox* [T](self: Optional[T]): T {.raises: [Exception, UnboxError].} =
 
 
 proc filter* [T](self: Optional[T]; predicate: Predicate[T]): Optional[T] =
-  self.flatMap(predicate.ifElse(some, _ => T.none()))
-
+  self.flatMap(predicate.fold(some, _ => T.none()))
 
 
 func `==`* [T](self, other: Optional[T]): bool =
-  self.ifSome(
-    selfValue => other.ifSome(partial(?_ == selfValue), () => false),
-    () => other.isNone()
+  self.fold(
+    selfValue => other.fold(partial(?_ == selfValue), alwaysFalse[Unit]),
+    (_: Unit) => other.isNone()
   )
 
 
 proc `$`* [T](self: Optional[T]): string =
-  self.ifSome(value => fmt"some({value})", () => fmt"none({$T})")
+  self.fold(value => fmt"some({value})", (_: Unit) => fmt"none({T})")
