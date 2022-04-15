@@ -12,7 +12,7 @@ import std/[sugar]
 
 
 
-func itself* [T](value: T): T =
+proc itself* [T](value: T): T =
   itself.itself(value)
 
 
@@ -25,4 +25,4 @@ proc into* [A; B](self: A; f: A -> B): B =
 proc apply* [A; B](self: A; f: A -> B): B {.
   deprecated: """Since "0.2.0". Use "into" instead."""
 .} =
-  identity.into(self, f)
+  self.into(f)
