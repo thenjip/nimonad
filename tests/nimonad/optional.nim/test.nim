@@ -3,7 +3,7 @@ when isMainModule:
 
   import pkg/nimonad/[optional, predicate]
 
-  import pkg/funcynim/[ignore, partialproc, run, unit]
+  import pkg/funcynim/[ignore, run, unit]
 
   import std/[strutils, sugar, unittest]
 
@@ -121,7 +121,7 @@ when isMainModule:
           proc doTest () =
             const results = (
               0.some().some.flatten(),
-              string.none().map(partial(len(?_))),
+              string.none().map(s => s.len()),
               5.4.some().unbox()
             )
 
@@ -138,7 +138,7 @@ when isMainModule:
           require:
             expected != unexpected
 
-          let actual = expected.some().unboxOr(() => unexpected)
+          let actual = expected.some().unboxOr((_: Unit) => unexpected)
 
           check:
             actual == expected
@@ -151,14 +151,14 @@ when isMainModule:
 
       test """"unboxOr" with "none" should return the default value passed.""":
         proc doTest [T](expected: T) =
-          let actual = T.none().unboxOr(() => expected)
+          let actual = T.none().unboxOr((_: Unit) => expected)
 
           check:
             actual == expected
 
 
         doTest('a')
-        doTest(unboxOr[int32])
+        doTest(doTest[uint32])
 
 
 
@@ -232,15 +232,16 @@ when isMainModule:
             expected = T.none()
             actual = value.some().filter(alwaysFalse[T])
 
-          check:
+          #[
+            TODO: Replace with `check:` once
+              https://github.com/nim-lang/Nim/issues/19189 has been fixed.
+          ]#
+          doAssert:
             actual == expected
 
 
         doTest("abc".cstring)
-        when defined(js):
-          doTest(partial($ ?:int))
-        else:
-          doTest(partial($ ?:uint))
+        doTest((i: int) => $i)
         doTest(0)
 
 
