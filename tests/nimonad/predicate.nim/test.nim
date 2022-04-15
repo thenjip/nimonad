@@ -80,7 +80,7 @@ when isMainModule:
       ].join($' '):
         proc doTest [A; B](self: Predicate[A]; then, `else`: A -> B; value: A) =
           let
-            actual = self.tracedIfElse(then, `else`).run(value)
+            actual = self.tracedFold(then, `else`).run(value)
             expected = trace(Path.Then, then.run(value))
 
           check:
@@ -98,7 +98,7 @@ when isMainModule:
       ].join($' '):
         proc doTest [A; B](self: Predicate[A]; then, `else`: A -> B; value: A) =
           let
-            actual = self.tracedIfElse(then, `else`).run(value)
+            actual = self.tracedFold(then, `else`).run(value)
             expected = trace(Path.Else, `else`.run(value))
 
           check:

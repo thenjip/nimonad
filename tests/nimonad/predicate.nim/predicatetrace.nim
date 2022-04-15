@@ -22,12 +22,12 @@ func trace* [T](path: Path; output: T): Trace[T] =
 
 
 
-proc tracedIfElse* [A; B](
+proc tracedFold* [A; B](
   self: Predicate[A];
   then: A -> B;
   `else`: A -> B
 ): A -> Trace[B] =
-  self.ifElse(
+  self.fold(
     then.chain(partial(trace(Path.Then, ?:B))),
     `else`.chain(partial(trace(Path.Else, ?:B)))
   )
