@@ -53,8 +53,13 @@ func none* (T: typedesc[not Nilable]): Optional[T] =
   Optional[T](empty: true)
 
 
-func none* [T](): Optional[T] =
+func none* [T](_: Unit): Optional[T] =
+  ## Since `0.2.0`.
   T.none()
+
+
+func none* [T](): Optional[T] {.deprecated: """Since "0.2.0".""".} =
+  none(unit())
 
 
 
