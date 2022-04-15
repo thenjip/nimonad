@@ -205,6 +205,8 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="fold" href="#fold"><span>fold:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
+          data-doc-search-tag="optional: fold[A; B](self: Optional[A]; then: A -&gt; B; else: Unit -&gt; B): B" href="nimonad/optional.html#fold%2COptional%5BA%5D%2C%2C">optional: fold[A; B](self: Optional[A]; then: A -&gt; B; else: Unit -&gt; B): B</a></li>
+          <li><a class="reference external"
           data-doc-search-tag="predicate: fold[A; B](self: Predicate[A]; then, else: A -&gt; B): A -&gt; B" href="nimonad/predicate.html#fold%2CPredicate%5BA%5D%2C%2C">predicate: fold[A; B](self: Predicate[A]; then, else: A -&gt; B): A -&gt; B</a></li>
           </ul></dd>
 <dt><a name="ifElse" href="#ifElse"><span>ifElse:</span></a></dt><dd><ul class="simple">
@@ -344,6 +346,8 @@ window.addEventListener('DOMContentLoaded', main);
           data-doc-search-tag="optional: none(T: typedesc[not Nilable]): Optional[T]" href="nimonad/optional.html#none%2Ctypedesc%5B%5D">optional: none(T: typedesc[not Nilable]): Optional[T]</a></li>
           <li><a class="reference external"
           data-doc-search-tag="optional: none(T: typedesc[Nilable]): Optional[T]" href="nimonad/optional.html#none%2Ctypedesc%5BNilable%5D">optional: none(T: typedesc[Nilable]): Optional[T]</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="optional: none[T](_: Unit): Optional[T]" href="nimonad/optional.html#none%2CUnit">optional: none[T](_: Unit): Optional[T]</a></li>
           </ul></dd>
 <dt><a name="Optional" href="#Optional"><span>Optional:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -409,7 +413,9 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="unboxOr" href="#unboxOr"><span>unboxOr:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="optional: unboxOr[T](self: Optional[T]; else: () -&gt; T): T" href="nimonad/optional.html#unboxOr%2COptional%5BT%5D%2C">optional: unboxOr[T](self: Optional[T]; else: () -&gt; T): T</a></li>
+          data-doc-search-tag="optional: unboxOr[T](self: Optional[T]; else: Unit -&gt; T): T" href="nimonad/optional.html#unboxOr%2COptional%5BT%5D%2C">optional: unboxOr[T](self: Optional[T]; else: Unit -&gt; T): T</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="optional: unboxOr[T](self: Optional[T]; else: () -&gt; T): T" href="nimonad/optional.html#unboxOr%2COptional%5BT%5D%2C_2">optional: unboxOr[T](self: Optional[T]; else: () -&gt; T): T</a></li>
           </ul></dd>
 <dt><a name="Verdict" href="#Verdict"><span>Verdict:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -424,7 +430,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2022-04-15 15:00:19 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2022-04-15 15:35:11 UTC</small>
       </div>
     </div>
   </div>

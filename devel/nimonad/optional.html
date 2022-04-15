@@ -153,6 +153,11 @@ window.addEventListener('DOMContentLoaded', main);
     title="flatten[T](self: Optional[Optional[T]]): Optional[T]">flatten[T](self: Optional[Optional[T]]): Optional[T]</a></li>
 
   </ul>
+  <ul class="simple nested-toc-section">fold
+      <li><a class="reference" href="#fold%2COptional%5BA%5D%2C%2C"
+    title="fold[A; B](self: Optional[A]; then: A -&gt; B; else: Unit -&gt; B): B">fold[A; B](self: Optional[A]; then: A -&gt; B; else: Unit -&gt; B): B</a></li>
+
+  </ul>
   <ul class="simple nested-toc-section">ifNone
       <li><a class="reference" href="#ifNone%2COptional%5BA%5D%2C%2C"
     title="ifNone[A; B](self: Optional[A]; then: () -&gt; B; else: A -&gt; B): B">ifNone[A; B](self: Optional[A]; then: () -&gt; B; else: A -&gt; B): B</a></li>
@@ -187,6 +192,8 @@ window.addEventListener('DOMContentLoaded', main);
     title="none(T: typedesc[not Nilable]): Optional[T]">none(T: typedesc[not Nilable]): Optional[T]</a></li>
   <li><a class="reference" href="#none"
     title="none[T](): Optional[T]">none[T](): Optional[T]</a></li>
+  <li><a class="reference" href="#none%2CUnit"
+    title="none[T](_: Unit): Optional[T]">none[T](_: Unit): Optional[T]</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">optional
@@ -207,8 +214,10 @@ window.addEventListener('DOMContentLoaded', main);
 
   </ul>
   <ul class="simple nested-toc-section">unboxOr
-      <li><a class="reference" href="#unboxOr%2COptional%5BT%5D%2C"
+      <li><a class="reference" href="#unboxOr%2COptional%5BT%5D%2C_2"
     title="unboxOr[T](self: Optional[T]; else: () -&gt; T): T">unboxOr[T](self: Optional[T]; else: () -&gt; T): T</a></li>
+  <li><a class="reference" href="#unboxOr%2COptional%5BT%5D%2C"
+    title="unboxOr[T](self: Optional[T]; else: Unit -&gt; T): T">unboxOr[T](self: Optional[T]; else: Unit -&gt; T): T</a></li>
 
   </ul>
 
@@ -232,9 +241,9 @@ window.addEventListener('DOMContentLoaded', main);
 
   </div>
   &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L1"
+href="https://github.com/thenjip/nimonad/tree/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L1"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L1" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L1" class="link-seesrc" target="_blank" >Edit</a>
 
   <div class="nine columns" id="content">
   <div id="tocRoot"></div>
@@ -258,9 +267,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L22"
+href="https://github.com/thenjip/nimonad/tree/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L22"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L22" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L22" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -280,9 +289,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L27"
+href="https://github.com/thenjip/nimonad/tree/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L27"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L27" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L27" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -292,9 +301,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L25"
+href="https://github.com/thenjip/nimonad/tree/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L25"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L25" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L25" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -309,9 +318,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L158"
+href="https://github.com/thenjip/nimonad/tree/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L177"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L158" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L177" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -321,9 +330,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L151"
+href="https://github.com/thenjip/nimonad/tree/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L170"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L151" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L170" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -333,9 +342,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L146"
+href="https://github.com/thenjip/nimonad/tree/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L166"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L146" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L166" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -345,9 +354,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 Applies <tt class="docutils literal"><span class="pre"><span class="Identifier">f</span></span></tt> to the value inside <tt class="docutils literal"><span class="pre"><span class="Identifier">self</span></span></tt> or does nothing if <tt class="docutils literal"><span class="pre"><span class="Identifier">self</span></span></tt> is empty. 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L109"
+href="https://github.com/thenjip/nimonad/tree/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L123"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L109" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L123" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -357,33 +366,53 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L123"
+href="https://github.com/thenjip/nimonad/tree/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L137"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L123" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L137" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+</div>
+<div id="fold,Optional[A],,">
+<dt><pre><span class="Keyword">proc</span> <a href="#fold%2COptional%5BA%5D%2C%2C"><span class="Identifier">fold</span></a><span class="Other">[</span><span class="Identifier">A</span><span class="Other">;</span> <span class="Identifier">B</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="optional.html#Optional"><span class="Identifier">Optional</span></a><span class="Other">[</span><span class="Identifier">A</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">then</span><span class="Other">:</span> <span class="Identifier">A</span> <span class="Operator">-&gt;</span> <span class="Identifier">B</span><span class="Other">;</span> <span class="Identifier">else</span><span class="Other">:</span> <span class="Identifier">Unit</span> <span class="Operator">-&gt;</span> <span class="Identifier">B</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">B</span></pre></dt>
+<dd>
+
+Since <tt class="docutils literal"><span class="pre"><span class="FloatNumber">0.2</span><span class="Operator">.</span><span class="DecNumber">0</span></span></tt>.
+&nbsp;&nbsp;<a
+href="https://github.com/thenjip/nimonad/tree/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L105"
+class="link-seesrc" target="_blank">Source</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L105" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
 <div id="ifNone,Optional[A],,">
-<dt><pre><span class="Keyword">proc</span> <a href="#ifNone%2COptional%5BA%5D%2C%2C"><span class="Identifier">ifNone</span></a><span class="Other">[</span><span class="Identifier">A</span><span class="Other">;</span> <span class="Identifier">B</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="optional.html#Optional"><span class="Identifier">Optional</span></a><span class="Other">[</span><span class="Identifier">A</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">then</span><span class="Other">:</span> <span class="Other">(</span><span class="Other">)</span> <span class="Operator">-&gt;</span> <span class="Identifier">B</span><span class="Other">;</span> <span class="Identifier">else</span><span class="Other">:</span> <span class="Identifier">A</span> <span class="Operator">-&gt;</span> <span class="Identifier">B</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">B</span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#ifNone%2COptional%5BA%5D%2C%2C"><span class="Identifier">ifNone</span></a><span class="Other">[</span><span class="Identifier">A</span><span class="Other">;</span> <span class="Identifier">B</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="optional.html#Optional"><span class="Identifier">Optional</span></a><span class="Other">[</span><span class="Identifier">A</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">then</span><span class="Other">:</span> <span class="Other">(</span><span class="Other">)</span> <span class="Operator">-&gt;</span> <span class="Identifier">B</span><span class="Other">;</span> <span class="Identifier">else</span><span class="Other">:</span> <span class="Identifier">A</span> <span class="Operator">-&gt;</span> <span class="Identifier">B</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">B</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">deprecated</span><span class="Other">:</span> <span class="StringLit">&quot;&quot;&quot;Since &quot;0.2.0&quot;. Use &quot;fold&quot; instead.&quot;&quot;&quot;</span></span>.}</pre></dt>
 <dd>
+  <div class="deprecation-message">
+    <b>Deprecated:</b> Since &quot;0.2.0&quot;. Use &quot;fold&quot; instead.
+  </div>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L100"
+href="https://github.com/thenjip/nimonad/tree/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L110"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L100" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L110" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
 <div id="ifSome,Optional[A],,">
-<dt><pre><span class="Keyword">proc</span> <a href="#ifSome%2COptional%5BA%5D%2C%2C"><span class="Identifier">ifSome</span></a><span class="Other">[</span><span class="Identifier">A</span><span class="Other">;</span> <span class="Identifier">B</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="optional.html#Optional"><span class="Identifier">Optional</span></a><span class="Other">[</span><span class="Identifier">A</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">then</span><span class="Other">:</span> <span class="Identifier">A</span> <span class="Operator">-&gt;</span> <span class="Identifier">B</span><span class="Other">;</span> <span class="Identifier">else</span><span class="Other">:</span> <span class="Other">(</span><span class="Other">)</span> <span class="Operator">-&gt;</span> <span class="Identifier">B</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">B</span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#ifSome%2COptional%5BA%5D%2C%2C"><span class="Identifier">ifSome</span></a><span class="Other">[</span><span class="Identifier">A</span><span class="Other">;</span> <span class="Identifier">B</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="optional.html#Optional"><span class="Identifier">Optional</span></a><span class="Other">[</span><span class="Identifier">A</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">then</span><span class="Other">:</span> <span class="Identifier">A</span> <span class="Operator">-&gt;</span> <span class="Identifier">B</span><span class="Other">;</span> <span class="Identifier">else</span><span class="Other">:</span> <span class="Other">(</span><span class="Other">)</span> <span class="Operator">-&gt;</span> <span class="Identifier">B</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">B</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">deprecated</span><span class="Other">:</span> <span class="StringLit">&quot;&quot;&quot;Since &quot;0.2.0&quot;. Use &quot;fold&quot; instead.&quot;&quot;&quot;</span></span>.}</pre></dt>
 <dd>
+  <div class="deprecation-message">
+    <b>Deprecated:</b> Since &quot;0.2.0&quot;. Use &quot;fold&quot; instead.
+  </div>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L104"
+href="https://github.com/thenjip/nimonad/tree/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L116"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L104" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L116" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -393,9 +422,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L86"
+href="https://github.com/thenjip/nimonad/tree/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L91"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L86" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L91" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -405,9 +434,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L90"
+href="https://github.com/thenjip/nimonad/tree/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L95"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L90" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L95" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -417,9 +446,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L95"
+href="https://github.com/thenjip/nimonad/tree/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L100"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L95" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L100" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -429,9 +458,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 Applies <tt class="docutils literal"><span class="pre"><span class="Identifier">f</span></span></tt> to the value inside <tt class="docutils literal"><span class="pre"><span class="Identifier">self</span></span></tt> or does nothing if <tt class="docutils literal"><span class="pre"><span class="Identifier">self</span></span></tt> is empty. 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L116"
+href="https://github.com/thenjip/nimonad/tree/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L130"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L116" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L130" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -441,9 +470,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L48"
+href="https://github.com/thenjip/nimonad/tree/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L48"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L48" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L48" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -453,21 +482,36 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L52"
+href="https://github.com/thenjip/nimonad/tree/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L52"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L52" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L52" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
 <div id="none">
-<dt><pre><span class="Keyword">func</span> <a href="#none"><span class="Identifier">none</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <a href="optional.html#Optional"><span class="Identifier">Optional</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span></pre></dt>
+<dt><pre><span class="Keyword">func</span> <a href="#none"><span class="Identifier">none</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <a href="optional.html#Optional"><span class="Identifier">Optional</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">deprecated</span><span class="Other">:</span> <span class="StringLit">&quot;&quot;&quot;Since &quot;0.2.0&quot;.&quot;&quot;&quot;</span></span>.}</pre></dt>
 <dd>
+  <div class="deprecation-message">
+    <b>Deprecated:</b> Since &quot;0.2.0&quot;.
+  </div>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L56"
+href="https://github.com/thenjip/nimonad/tree/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L61"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L56" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L61" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+</div>
+<div id="none,Unit">
+<dt><pre><span class="Keyword">func</span> <a href="#none%2CUnit"><span class="Identifier">none</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Operator">_</span><span class="Other">:</span> <span class="Identifier">Unit</span><span class="Other">)</span><span class="Other">:</span> <a href="optional.html#Optional"><span class="Identifier">Optional</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span></pre></dt>
+<dd>
+
+Since <tt class="docutils literal"><span class="pre"><span class="FloatNumber">0.2</span><span class="Operator">.</span><span class="DecNumber">0</span></span></tt>.
+&nbsp;&nbsp;<a
+href="https://github.com/thenjip/nimonad/tree/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L56"
+class="link-seesrc" target="_blank">Source</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L56" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -477,9 +521,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 If <tt class="docutils literal"><span class="pre"><span class="Identifier">value</span></span></tt> is not <tt class="docutils literal"><span class="pre"><span class="Keyword">nil</span></span></tt>, returns <tt class="docutils literal"><span class="pre"><span class="Identifier">value</span><span class="Operator">.</span><span class="Identifier">some</span><span class="Punctuation">(</span><span class="Punctuation">)</span></span></tt>, otherwise an empty <tt class="docutils literal"><span class="pre"><span class="Identifier">Optional</span></span></tt>. 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L77"
+href="https://github.com/thenjip/nimonad/tree/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L82"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L77" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L82" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -489,9 +533,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L66"
+href="https://github.com/thenjip/nimonad/tree/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L71"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L66" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L71" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -501,9 +545,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L72"
+href="https://github.com/thenjip/nimonad/tree/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L77"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L72" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L77" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -513,21 +557,37 @@ class="link-seesrc" target="_blank">Source</a>
 
 Retrieves the value inside <tt class="docutils literal"><span class="pre"><span class="Identifier">self</span></span></tt> or raise an <tt class="docutils literal"><span class="pre"><span class="Identifier">UnboxError</span></span></tt> if <tt class="docutils literal"><span class="pre"><span class="Identifier">self</span></span></tt> is empty. 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L137"
+href="https://github.com/thenjip/nimonad/tree/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L157"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L137" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L157" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+</div>
+<div id="unboxOr,Optional[T],_2">
+<dt><pre><span class="Keyword">proc</span> <a href="#unboxOr%2COptional%5BT%5D%2C_2"><span class="Identifier">unboxOr</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="optional.html#Optional"><span class="Identifier">Optional</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">else</span><span class="Other">:</span> <span class="Other">(</span><span class="Other">)</span> <span class="Operator">-&gt;</span> <span class="Identifier">T</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span> {.
+    <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">deprecated</span><span class="Other">:</span> <span class="StringLit">&quot;&quot;&quot;Since &quot;0.2.0&quot;.&quot;&quot;&quot;</span></span>.}</pre></dt>
+<dd>
+  <div class="deprecation-message">
+    <b>Deprecated:</b> Since &quot;0.2.0&quot;.
+  </div>
+
+
+&nbsp;&nbsp;<a
+href="https://github.com/thenjip/nimonad/tree/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L146"
+class="link-seesrc" target="_blank">Source</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L146" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
 <div id="unboxOr,Optional[T],">
-<dt><pre><span class="Keyword">proc</span> <a href="#unboxOr%2COptional%5BT%5D%2C"><span class="Identifier">unboxOr</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="optional.html#Optional"><span class="Identifier">Optional</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">else</span><span class="Other">:</span> <span class="Other">(</span><span class="Other">)</span> <span class="Operator">-&gt;</span> <span class="Identifier">T</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#unboxOr%2COptional%5BT%5D%2C"><span class="Identifier">unboxOr</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">self</span><span class="Other">:</span> <a href="optional.html#Optional"><span class="Identifier">Optional</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">else</span><span class="Other">:</span> <span class="Identifier">Unit</span> <span class="Operator">-&gt;</span> <span class="Identifier">T</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">T</span></pre></dt>
 <dd>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L128"
+href="https://github.com/thenjip/nimonad/tree/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L142"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L128" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L142" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -542,9 +602,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L43"
+href="https://github.com/thenjip/nimonad/tree/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L43"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L43" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L43" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -554,9 +614,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/thenjip/nimonad/tree/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L39"
+href="https://github.com/thenjip/nimonad/tree/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L39"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/7531dd822ea18a7919c8a258d7ce26df74b4fba5/src/nimonad/optional.nim#L39" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/thenjip/nimonad/edit/496b863689e74d71237784d393b23acab788c9b9/src/nimonad/optional.nim#L39" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -570,7 +630,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2022-04-15 15:00:19 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2022-04-15 15:35:11 UTC</small>
       </div>
     </div>
   </div>
