@@ -139,12 +139,18 @@ func flatten* [T](self: Optional[Optional[T]]): Optional[T] =
 
 
 
-proc unboxOr* [T](self: Optional[T]; `else`: () -> T): T =
-  self.ifSome(itself, `else`)
+proc unboxOr* [T](self: Optional[T]; `else`: Unit -> T): T =
+  self.fold(itself[T], `else`)
+
+
+proc unboxOr* [T](self: Optional[T]; `else`: () -> T): T {.
+  deprecated: """Since "0.2.0"."""
+.} =
+  self.unboxOr((_: Unit) => `else`.run())
 
 
 
-func raiseUnboxError [T](): T {.noinit, raises: [UnboxError].} =
+func raiseUnboxError [T](_: Unit): T {.noinit, raises: [UnboxError].} =
   raise UnboxError.newException("")
 
 
