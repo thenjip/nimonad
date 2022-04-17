@@ -120,7 +120,7 @@ when isMainModule:
         else:
           proc doTest () =
             const results = (
-              0.some().some.flatten(),
+              0.some().some().join(),
               string.none().map(s => s.len()),
               5.4.some().unbox()
             )

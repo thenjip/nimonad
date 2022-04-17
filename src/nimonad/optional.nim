@@ -120,22 +120,29 @@ proc ifSome* [A; B](self: Optional[A]; then: A -> B; `else`: () -> B): B {.
 
 
 
-proc flatMap* [A; B](self: Optional[A]; f: A -> Optional[B]): Optional[B] =
-  ##[
-    Applies `f` to the value inside `self` or does nothing if `self` is empty.
-  ]##
-  self.fold(f, none)
-
-
 proc map* [A; B](self: Optional[A]; f: A -> B): Optional[B] =
   ##[
     Applies `f` to the value inside `self` or does nothing if `self` is empty.
   ]##
-  self.flatMap(f.chain(some))
+  self.fold(f.chain(some), none)
 
 
-func flatten* [T](self: Optional[Optional[T]]): Optional[T] =
-  self.flatMap(itself)
+func join* [T](self: Optional[Optional[T]]): Optional[T] =
+  ## Since `0.2.0`.
+  self.fold(itself, none)
+
+
+func flatten* [T](self: Optional[Optional[T]]): Optional[T] {.
+  deprecated: """Since "0.2.0". Use "join" instead."""
+.} =
+  self.join()
+
+
+proc flatMap* [A; B](self: Optional[A]; f: A -> Optional[B]): Optional[B] =
+  ##[
+    Applies `f` to the value inside `self` or does nothing if `self` is empty.
+  ]##
+  self.map(f).join()
 
 
 
