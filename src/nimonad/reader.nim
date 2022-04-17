@@ -9,7 +9,7 @@
 
 import identity
 
-import pkg/funcynim/[chain]
+import pkg/funcynim/[chain, run, unit]
 
 import std/[sugar]
 
@@ -27,8 +27,12 @@ func ask* (S: typedesc): Reader[S, S] =
   itself[S]
 
 
-func ask* [S](): Reader[S, S] =
+func ask* [S](_: Unit): Reader[S, S] =
   S.ask()
+
+
+func ask* [S](): Reader[S, S] {.deprecated: "Since 0.2.0.".} =
+  ask[S](unit())
 
 
 
