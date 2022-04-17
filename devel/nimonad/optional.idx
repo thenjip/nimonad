@@ -16,9 +16,10 @@ isSome	nimonad/optional.html#isSome,Optional[T]	optional: isSome[T](self: Option
 fold	nimonad/optional.html#fold,Optional[A],,	optional: fold[A; B](self: Optional[A]; then: A -&gt; B; else: Unit -&gt; B): B	
 ifNone	nimonad/optional.html#ifNone,Optional[A],,	optional: ifNone[A; B](self: Optional[A]; then: () -&gt; B; else: A -&gt; B): B	
 ifSome	nimonad/optional.html#ifSome,Optional[A],,	optional: ifSome[A; B](self: Optional[A]; then: A -&gt; B; else: () -&gt; B): B	
-flatMap	nimonad/optional.html#flatMap,Optional[A],	optional: flatMap[A; B](self: Optional[A]; f: A -&gt; Optional[B]): Optional[B]	
 map	nimonad/optional.html#map,Optional[A],	optional: map[A; B](self: Optional[A]; f: A -&gt; B): Optional[B]	
+join	nimonad/optional.html#join,Optional[Optional[T]]	optional: join[T](self: Optional[Optional[T]]): Optional[T]	
 flatten	nimonad/optional.html#flatten,Optional[Optional[T]]	optional: flatten[T](self: Optional[Optional[T]]): Optional[T]	
+flatMap	nimonad/optional.html#flatMap,Optional[A],	optional: flatMap[A; B](self: Optional[A]; f: A -&gt; Optional[B]): Optional[B]	
 unboxOr	nimonad/optional.html#unboxOr,Optional[T],	optional: unboxOr[T](self: Optional[T]; else: Unit -&gt; T): T	
 unboxOr	nimonad/optional.html#unboxOr,Optional[T],_2	optional: unboxOr[T](self: Optional[T]; else: () -&gt; T): T	
 unbox	nimonad/optional.html#unbox,Optional[T]	optional: unbox[T](self: Optional[T]): T	
