@@ -5,7 +5,7 @@ when isMainModule:
 
   import pkg/funcynim/[operators, partialproc, unit]
 
-  import std/[macros, sequtils, strutils, sugar, unittest]
+  import std/[sequtils, strutils, sugar, unittest]
 
 
 
