@@ -9,7 +9,7 @@
 
 import identity
 
-import pkg/funcynim/[chain]
+import pkg/funcynim/[chain, run, unit]
 
 import std/[sugar]
 
@@ -27,8 +27,12 @@ func ask* (S: typedesc): Reader[S, S] =
   itself[S]
 
 
-func ask* [S](): Reader[S, S] =
+func ask* [S](_: Unit): Reader[S, S] =
   S.ask()
+
+
+func ask* [S](): Reader[S, S] {.deprecated: "Since 0.2.0.".} =
+  ask[S](unit())
 
 
 
@@ -50,11 +54,16 @@ func map* [S; A; B](self: Reader[S, A]; f: A -> B): Reader[S, B] =
   self.chain(f)
 
 
+func join* [S; T](self: Reader[S, Reader[S, T]]): Reader[S, T] =
+  ## Since `0.2.0`.
+  (state: S) => self.run(state).run(state)
+
+
 func flatMap* [S; A; B](
   self: Reader[S, A];
   f: A -> Reader[S, B]
 ): Reader[S, B] =
-  (state: S) => self.run(state).into(f).run(state)
+  self.map(f).join()
 
 
 
