@@ -54,11 +54,16 @@ func map* [S; A; B](self: Reader[S, A]; f: A -> B): Reader[S, B] =
   self.chain(f)
 
 
+func join* [S; T](self: Reader[S, Reader[S, T]]): Reader[S, T] =
+  ## Since `0.2.0`.
+  (state: S) => self.run(state).run(state)
+
+
 func flatMap* [S; A; B](
   self: Reader[S, A];
   f: A -> Reader[S, B]
 ): Reader[S, B] =
-  (state: S) => self.run(state).into(f).run(state)
+  self.map(f).join()
 
 
 
