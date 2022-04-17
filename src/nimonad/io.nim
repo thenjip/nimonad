@@ -19,7 +19,9 @@ import std/[sugar]
 
 
 type
-  Io* [T] = () -> T
+  Io* [T] =
+    # TODO: Change `() -> T` type to Unit -> T`.
+    () -> T
 
 
 
@@ -37,12 +39,19 @@ func map* [A; B](self: Io[A]; f: A -> B): Io[B] =
   () => self.run().into(f)
 
 
-func flatten* [T](self: Io[Io[T]]): Io[T] =
+func join* [T](self: Io[Io[T]]): Io[T] =
+  ## Since `0.2.0`.
   self.map(run)
 
 
+func flatten* [T](self: Io[Io[T]]): Io[T] {.
+  deprecated: """Since "0.2.0". Use "join" instead."""
+.} =
+  self.join()
+
+
 func flatMap* [A; B](self: Io[A]; f: A -> Io[B]): Io[B] =
-  self.map(f).flatten()
+  self.map(f).join()
 
 
 
@@ -51,7 +60,7 @@ func bracket* [A; B](before: Io[A]; between: A -> B; after: A -> Unit): Io[B] =
     If an exception is raised anywhere in `before` or `between`, `after` will
     not be executed.
   ]##
-  before.map(between.flatMap((b: B) => after.chain(_ => b)))
+  before.map(between.flatMap((output: B) => after.chain(_ => output)))
 
 
 
