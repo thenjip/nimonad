@@ -70,14 +70,18 @@ window.addEventListener('DOMContentLoaded', main);
 <div class="document" id="documentId">
   <div class="container">
     <h1 class="title">Index</h1>
-    Modules: <a href="nimonad/identity.html">nimonad/identity</a>, <a href="nimonad/io.html">nimonad/io</a>, <a href="nimonad/laws.html">nimonad/laws</a>, <a href="nimonad/laws/flatmapper.html">nimonad/laws/flatmapper</a>, <a href="nimonad/laws/flatmapper/constructors.html">nimonad/laws/flatmapper/constructors</a>, <a href="nimonad/laws/specs.html">nimonad/laws/specs</a>, <a href="nimonad/laws/verdict.html">nimonad/laws/verdict</a>, <a href="nimonad/optional.html">nimonad/optional</a>, <a href="nimonad/predicate.html">nimonad/predicate</a>, <a href="nimonad/reader.html">nimonad/reader</a>.<br/><p /><h2>API symbols</h2>
+    Modules: <a href="nimonad/identity.html">nimonad/identity</a>, <a href="nimonad/io.html">nimonad/io</a>, <a href="nimonad/laws.html">nimonad/laws</a>, <a href="nimonad/laws/flatmapper.html">nimonad/laws/flatmapper</a>, <a href="nimonad/laws/flatmapper/constructors.html">nimonad/laws/flatmapper/constructors</a>, <a href="nimonad/laws/specs.html">nimonad/laws/specs</a>, <a href="nimonad/laws/verdict.html">nimonad/laws/verdict</a>, <a href="nimonad/optional.html">nimonad/optional</a>, <a href="nimonad/predicate.html">nimonad/predicate</a>, <a href="nimonad/reader.html">nimonad/reader</a>, <a href="nimonad/tried.html">nimonad/tried</a>.<br/><p /><h2>API symbols</h2>
 <dl><dt><a name="%60%24%60" href="#%60%24%60"><span>`$`:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="optional: `$`[T](self: Optional[T]): string" href="nimonad/optional.html#%24%2COptional%5BT%5D">optional: `$`[T](self: Optional[T]): string</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="tried: `$`[S; F](self: Tried[S, F]): string" href="nimonad/tried.html#%24%2CTried%5BS%2CF%5D">tried: `$`[S; F](self: Tried[S, F]): string</a></li>
           </ul></dd>
 <dt><a name="%60%3D%3D%60" href="#%60%3D%3D%60"><span>`==`:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="optional: `==`[T](self, other: Optional[T]): bool" href="nimonad/optional.html#%3D%3D%2COptional%5BT%5D%2COptional%5BT%5D">optional: `==`[T](self, other: Optional[T]): bool</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="tried: `==`[S; F](left, right: Tried[S, F]): bool" href="nimonad/tried.html#%3D%3D%2CTried%5BS%2CF%5D%2CTried%5BS%2CF%5D">tried: `==`[S; F](left, right: Tried[S, F]): bool</a></li>
           </ul></dd>
 <dt><a name="%60and%60" href="#%60and%60"><span>`and`:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -179,6 +183,18 @@ window.addEventListener('DOMContentLoaded', main);
     self: MonadLawsSpec[LA, LMA, LMB, RT, RM, AA, AB, AMA, AMB, AMC];
     flatMapper: FlatMapper[FMA, FA, FMB]{sym}): MonadLawsVerdict[LMB, RM, AMC]</a></li>
           </ul></dd>
+<dt><a name="failure" href="#failure"><span>failure:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="tried: failure[S; F](value: F): Tried[S, F]" href="nimonad/tried.html#failure%2CF">tried: failure[S; F](value: F): Tried[S, F]</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="tried: failure[F](value: F; S: typedesc): Tried[S, F]" href="nimonad/tried.html#failure%2CF%2Ctypedesc">tried: failure[F](value: F; S: typedesc): Tried[S, F]</a></li>
+          </ul></dd>
+<dt><a name="failureType" href="#failureType"><span>failureType:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="tried: failureType[S; F](self: Tried[S, F]): typedesc[F]" href="nimonad/tried.html#failureType.t%2CTried%5BS%2CF%5D">tried: failureType[S; F](self: Tried[S, F]): typedesc[F]</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="tried: failureType[S; F](X: typedesc[Tried[S, F]]): typedesc[F]" href="nimonad/tried.html#failureType.t%2Ctypedesc%5BTried%5BS%2CF%5D%5D">tried: failureType[S; F](X: typedesc[Tried[S, F]]): typedesc[F]</a></li>
+          </ul></dd>
 <dt><a name="filter" href="#filter"><span>filter:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="optional: filter[T](self: Optional[T]; predicate: Predicate[T]): Optional[T]" href="nimonad/optional.html#filter%2COptional%5BT%5D%2CPredicate%5BT%5D">optional: filter[T](self: Optional[T]; predicate: Predicate[T]): Optional[T]</a></li>
@@ -190,6 +206,8 @@ window.addEventListener('DOMContentLoaded', main);
           data-doc-search-tag="optional: flatMap[A; B](self: Optional[A]; f: A -&gt; Optional[B]): Optional[B]" href="nimonad/optional.html#flatMap%2COptional%5BA%5D%2C">optional: flatMap[A; B](self: Optional[A]; f: A -&gt; Optional[B]): Optional[B]</a></li>
           <li><a class="reference external"
           data-doc-search-tag="reader: flatMap[S; A; B](self: Reader[S, A]; f: A -&gt; Reader[S, B]): Reader[S, B]" href="nimonad/reader.html#flatMap%2CReader%5BS%2CA%5D%2C">reader: flatMap[S; A; B](self: Reader[S, A]; f: A -&gt; Reader[S, B]): Reader[S, B]</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="tried: flatMap[A; B; F](self: Tried[A, F]; f: A -&gt; Tried[B, F]): Tried[B, F]" href="nimonad/tried.html#flatMap%2CTried%5BA%2CF%5D%2C">tried: flatMap[A; B; F](self: Tried[A, F]; f: A -&gt; Tried[B, F]): Tried[B, F]</a></li>
           </ul></dd>
 <dt><a name="FlatMapper" href="#FlatMapper"><span>FlatMapper:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -210,6 +228,8 @@ window.addEventListener('DOMContentLoaded', main);
           data-doc-search-tag="optional: fold[A; B](self: Optional[A]; then: A -&gt; B; else: Unit -&gt; B): B" href="nimonad/optional.html#fold%2COptional%5BA%5D%2C%2C">optional: fold[A; B](self: Optional[A]; then: A -&gt; B; else: Unit -&gt; B): B</a></li>
           <li><a class="reference external"
           data-doc-search-tag="predicate: fold[A; B](self: Predicate[A]; then, else: A -&gt; B): A -&gt; B" href="nimonad/predicate.html#fold%2CPredicate%5BA%5D%2C%2C">predicate: fold[A; B](self: Predicate[A]; then, else: A -&gt; B): A -&gt; B</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="tried: fold[S; F; T](self: Tried[S, F]; onSuccess: S -&gt; T; onFailure: F -&gt; T): T" href="nimonad/tried.html#fold%2CTried%5BS%2CF%5D%2C%2C">tried: fold[S; F; T](self: Tried[S, F]; onSuccess: S -&gt; T; onFailure: F -&gt; T): T</a></li>
           </ul></dd>
 <dt><a name="ifElse" href="#ifElse"><span>ifElse:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -245,6 +265,10 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="io: Io" href="nimonad/io.html#Io">io: Io</a></li>
           </ul></dd>
+<dt><a name="isFailure" href="#isFailure"><span>isFailure:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="tried: isFailure[S; F](self: Tried[S, F]): bool" href="nimonad/tried.html#isFailure%2CTried%5BS%2CF%5D">tried: isFailure[S; F](self: Tried[S, F]): bool</a></li>
+          </ul></dd>
 <dt><a name="isNone" href="#isNone"><span>isNone:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="optional: isNone[T: Nilable](self: Optional[T]): bool" href="nimonad/optional.html#isNone%2COptional%5BT%3A%20Nilable%5D">optional: isNone[T: Nilable](self: Optional[T]): bool</a></li>
@@ -254,6 +278,10 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="isSome" href="#isSome"><span>isSome:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="optional: isSome[T](self: Optional[T]): bool" href="nimonad/optional.html#isSome%2COptional%5BT%5D">optional: isSome[T](self: Optional[T]): bool</a></li>
+          </ul></dd>
+<dt><a name="isSuccess" href="#isSuccess"><span>isSuccess:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="tried: isSuccess[S; F](self: Tried[S, F]): bool" href="nimonad/tried.html#isSuccess%2CTried%5BS%2CF%5D">tried: isSuccess[S; F](self: Tried[S, F]): bool</a></li>
           </ul></dd>
 <dt><a name="itself" href="#itself"><span>itself:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -266,6 +294,8 @@ window.addEventListener('DOMContentLoaded', main);
           data-doc-search-tag="optional: join[T](self: Optional[Optional[T]]): Optional[T]" href="nimonad/optional.html#join%2COptional%5BOptional%5BT%5D%5D">optional: join[T](self: Optional[Optional[T]]): Optional[T]</a></li>
           <li><a class="reference external"
           data-doc-search-tag="reader: join[S; T](self: Reader[S, Reader[S, T]]): Reader[S, T]" href="nimonad/reader.html#join%2CReader%5BS%2CReader%5BS%2CT%5D%5D">reader: join[S; T](self: Reader[S, Reader[S, T]]): Reader[S, T]</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="tried: join[S; F](self: Tried[Tried[S, F], F]): Tried[S, F]" href="nimonad/tried.html#join%2CTried%5BTried%5BS%2CF%5D%2CF%5D">tried: join[S; F](self: Tried[Tried[S, F], F]): Tried[S, F]</a></li>
           </ul></dd>
 <dt><a name="LeftIdentitySpec" href="#LeftIdentitySpec"><span>LeftIdentitySpec:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -302,6 +332,12 @@ window.addEventListener('DOMContentLoaded', main);
           data-doc-search-tag="optional: map[A; B](self: Optional[A]; f: A -&gt; B): Optional[B]" href="nimonad/optional.html#map%2COptional%5BA%5D%2C">optional: map[A; B](self: Optional[A]; f: A -&gt; B): Optional[B]</a></li>
           <li><a class="reference external"
           data-doc-search-tag="reader: map[S; A; B](self: Reader[S, A]; f: A -&gt; B): Reader[S, B]" href="nimonad/reader.html#map%2CReader%5BS%2CA%5D%2C">reader: map[S; A; B](self: Reader[S, A]; f: A -&gt; B): Reader[S, B]</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="tried: map[A; B; F](self: Tried[A, F]; f: A -&gt; B): Tried[B, F]" href="nimonad/tried.html#map%2CTried%5BA%2CF%5D%2C">tried: map[A; B; F](self: Tried[A, F]; f: A -&gt; B): Tried[B, F]</a></li>
+          </ul></dd>
+<dt><a name="mapFailure" href="#mapFailure"><span>mapFailure:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="tried: mapFailure[S; FA; FB](self: Tried[S, FA]; f: FA -&gt; FB): Tried[S, FB]" href="nimonad/tried.html#mapFailure%2CTried%5BS%2CFA%5D%2C">tried: mapFailure[S; FA; FB](self: Tried[S, FA]; f: FA -&gt; FB): Tried[S, FB]</a></li>
           </ul></dd>
 <dt><a name="MonadLawsFlatMappers" href="#MonadLawsFlatMappers"><span>MonadLawsFlatMappers:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -395,6 +431,22 @@ window.addEventListener('DOMContentLoaded', main);
           <li><a class="reference external"
           data-doc-search-tag="optional: some[T: not Nilable](value: T): Optional[T]" href="nimonad/optional.html#some%2CT_2">optional: some[T: not Nilable](value: T): Optional[T]</a></li>
           </ul></dd>
+<dt><a name="success" href="#success"><span>success:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="tried: success[S; F](value: S): Tried[S, F]" href="nimonad/tried.html#success%2CS">tried: success[S; F](value: S): Tried[S, F]</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="tried: success[S](value: S; F: typedesc): Tried[S, F]" href="nimonad/tried.html#success%2CS%2Ctypedesc">tried: success[S](value: S; F: typedesc): Tried[S, F]</a></li>
+          </ul></dd>
+<dt><a name="successType" href="#successType"><span>successType:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="tried: successType[S; F](self: Tried[S, F]): typedesc[S]" href="nimonad/tried.html#successType.t%2CTried%5BS%2CF%5D">tried: successType[S; F](self: Tried[S, F]): typedesc[S]</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="tried: successType[S; F](X: typedesc[Tried[S, F]]): typedesc[S]" href="nimonad/tried.html#successType.t%2Ctypedesc%5BTried%5BS%2CF%5D%5D">tried: successType[S; F](X: typedesc[Tried[S, F]]): typedesc[S]</a></li>
+          </ul></dd>
+<dt><a name="swap" href="#swap"><span>swap:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="tried: swap[S; F](self: Tried[S, F]): Tried[F, S]" href="nimonad/tried.html#swap%2CTried%5BS%2CF%5D">tried: swap[S; F](self: Tried[S, F]): Tried[F, S]</a></li>
+          </ul></dd>
 <dt><a name="test" href="#test"><span>test:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="predicate: test[T](self: Predicate[T]; value: T): bool" href="nimonad/predicate.html#test%2CPredicate%5BT%5D%2CT">predicate: test[T](self: Predicate[T]; value: T): bool</a></li>
@@ -409,6 +461,10 @@ window.addEventListener('DOMContentLoaded', main);
           <li><a class="reference external"
           data-doc-search-tag="reader: toReader[T](value: T; S: typedesc): Reader[S, T]" href="nimonad/reader.html#toReader%2CT%2Ctypedesc">reader: toReader[T](value: T; S: typedesc): Reader[S, T]</a></li>
           </ul></dd>
+<dt><a name="Tried" href="#Tried"><span>Tried:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="tried: Tried" href="nimonad/tried.html#Tried">tried: Tried</a></li>
+          </ul></dd>
 <dt><a name="tryBracket" href="#tryBracket"><span>tryBracket:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="io: tryBracket[A; B](before: Io[A]; try: A -&gt; B; finally: A -&gt; Unit): Io[B]" href="nimonad/io.html#tryBracket%2CIo%5BA%5D%2C%2C">io: tryBracket[A; B](before: Io[A]; try: A -&gt; B; finally: A -&gt; Unit): Io[B]</a></li>
@@ -420,12 +476,28 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="UnboxError" href="#UnboxError"><span>UnboxError:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="optional: UnboxError" href="nimonad/optional.html#UnboxError">optional: UnboxError</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="tried: UnboxError" href="nimonad/tried.html#UnboxError">tried: UnboxError</a></li>
+          </ul></dd>
+<dt><a name="unboxFailure" href="#unboxFailure"><span>unboxFailure:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="tried: unboxFailure[S; F](self: Tried[S, F]): F" href="nimonad/tried.html#unboxFailure%2CTried%5BS%2CF%5D">tried: unboxFailure[S; F](self: Tried[S, F]): F</a></li>
           </ul></dd>
 <dt><a name="unboxOr" href="#unboxOr"><span>unboxOr:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="optional: unboxOr[T](self: Optional[T]; else: Unit -&gt; T): T" href="nimonad/optional.html#unboxOr%2COptional%5BT%5D%2C">optional: unboxOr[T](self: Optional[T]; else: Unit -&gt; T): T</a></li>
           <li><a class="reference external"
           data-doc-search-tag="optional: unboxOr[T](self: Optional[T]; else: () -&gt; T): T" href="nimonad/optional.html#unboxOr%2COptional%5BT%5D%2C_2">optional: unboxOr[T](self: Optional[T]; else: () -&gt; T): T</a></li>
+          </ul></dd>
+<dt><a name="unboxSuccess" href="#unboxSuccess"><span>unboxSuccess:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="tried: unboxSuccess[S; F](self: Tried[S, F]): S" href="nimonad/tried.html#unboxSuccess%2CTried%5BS%2CF%5D">tried: unboxSuccess[S; F](self: Tried[S, F]): S</a></li>
+          </ul></dd>
+<dt><a name="unboxSuccessOrRaise" href="#unboxSuccessOrRaise"><span>unboxSuccessOrRaise:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="tried: unboxSuccessOrRaise[S; E: CatchableError](self: Tried[S, proc (i0: Unit): ref E]): S" href="nimonad/tried.html#unboxSuccessOrRaise%2CTried%5BS%2Cproc%28Unit%29%5D">tried: unboxSuccessOrRaise[S; E: CatchableError](self: Tried[S, proc (i0: Unit): ref E]): S</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="tried: unboxSuccessOrRaise[S; E: CatchableError](self: Tried[S, ref E]): S" href="nimonad/tried.html#unboxSuccessOrRaise%2CTried%5BS%2Cref.E%5D">tried: unboxSuccessOrRaise[S; E: CatchableError](self: Tried[S, ref E]): S</a></li>
           </ul></dd>
 <dt><a name="Verdict" href="#Verdict"><span>Verdict:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -440,7 +512,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2022-04-30 09:22:11 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2022-04-30 09:27:20 UTC</small>
       </div>
     </div>
   </div>
