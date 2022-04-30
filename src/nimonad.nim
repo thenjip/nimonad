@@ -4,8 +4,7 @@ import nimonad/[
   laws,
   optional,
   predicate,
-  reader,
-  tried
+  reader
 ]
 
 
@@ -16,5 +15,4 @@ export
   laws,
   optional,
   predicate,
-  reader,
-  tried
+  reader
